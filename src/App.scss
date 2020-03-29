@@ -1,0 +1,82 @@
+@import './variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap&subset=latin-ext" rel="stylesheet');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  position: absolute;
+  height: 50px;
+  left: 10px;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.App-nav li {
+  padding: 10px;
+}
+
+.App-nav li a {
+  text-decoration: none;
+}
+
+.App-nav li.active {
+  background-color: #626c80;
+}
+
+.App-nav li:hover {
+  background-color: #626c80;
+  cursor: pointer;
+}
+
+.App-content {
+  text-align: center;
+  font-size: calc(10px + 2vmin);
+  color: #282c34;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

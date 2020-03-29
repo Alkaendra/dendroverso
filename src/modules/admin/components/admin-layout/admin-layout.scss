@@ -1,0 +1,30 @@
+@import '../../../../variables.scss';
+
+.admin-layout {
+  display: flex;
+  .admin-side-nav {
+    background: $bluishBlack;
+    flex: 0 0 10rem;
+    min-height: 100vh;
+    @include rightOnlyBoxShadow(12px, 3px);
+    & .active,
+    .active:hover a {
+      background-color: black;
+      color: white;
+    }
+    .admin-side-nav__tab {
+      @include tabTitle('Roboto');
+      color: white;
+      align-items: center;
+      display: flex;
+      justify-content: flex-start;
+      text-decoration: none;
+      &:hover {
+        background-color: #434750;
+      }
+    }
+  }
+  .admin-content {
+    width: 100%;
+  }
+}

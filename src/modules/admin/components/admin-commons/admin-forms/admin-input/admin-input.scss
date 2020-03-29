@@ -1,0 +1,62 @@
+@import '../../../../../../variables.scss';
+
+.admin-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  label {
+    display: flex;
+    font-size: 0.7rem;
+    justify-content: flex-start;
+  }
+  input {
+    border: unset;
+    font-size: 1rem;
+    padding: 1rem 0 0.4rem 0;
+    @include lightBorderBottom;
+  }
+  .admin-input--small {
+    @include adminTableCellWidth(100px);
+  }
+  .admin-input--medium {
+    @include adminTableCellWidth(200px);
+  }
+  .admin-input--large {
+    @include adminTableCellWidth(300px);
+  }
+  textarea {
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    &::-webkit-scrollbar {
+      width: 1px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      width: 1px;
+      background: #999;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: black;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  }
+  select {
+    border: unset;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    option {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+    }
+  }
+}

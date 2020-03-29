@@ -1,0 +1,12 @@
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 3rem;
+  .admin-form__title {
+    margin-bottom: 3rem;
+    h6 {
+      margin-bottom: 1rem;
+    }
+  }
+}

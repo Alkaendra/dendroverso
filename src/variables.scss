@@ -1,0 +1,45 @@
+// Mixins
+@mixin rightOnlyBoxShadow($blur, $width) {
+  box-shadow: -#{$width} 0px #{$blur} -#{$width} $boxShadowGrey;
+}
+@mixin tabTitle($font) {
+  cursor: pointer;
+  font-family: #{$font}, 'sans-serif';
+  font-weight: 300;
+  font-size: 0.8rem;
+  padding: 1rem;
+  text-transform: uppercase;
+}
+
+@mixin lightBorderBottom {
+  border-bottom: 1px solid $tenousGrey;
+}
+
+// Tables and lists
+
+@mixin adminTableCellWidth($width) {
+  display: flex;
+  align-self: center;
+  padding: 1rem;
+  text-overflow: ellipsis;
+  width: #{$width};
+}
+
+@mixin tablesBasicText($font) {
+  color: #666;
+  font-family: #{$font}, 'sans-serif';
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
+}
+
+@mixin tablesHeaderText($font) {
+  @include tablesBasicText($font);
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+// Colores
+$boxShadowGrey: #bbb;
+$bluishBlack: #282c34;
+$tenousGrey: rgba(224, 224, 224, 1);
