@@ -1,7 +1,9 @@
+@import '../../../../../variables.scss';
+
 .admin-field-trigger {
   align-items: flex-start;
-  background-color: #eee;
-  border: 1px solid lightgray;
+  background-color: $triggerFieldListItemBackground;
+  border: 1px solid darken($triggerFieldListItemBackground, 3%);
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -9,6 +11,7 @@
   justify-content: flex-start;
   margin-bottom: 1rem;
   margin-right: 1rem;
+  width: 98px;
   padding: 0.5rem;
   .admin-field-trigger-name {
     font-weight: 600;
@@ -18,6 +21,6 @@
     font-size: 0.7rem;
   }
   &:hover {
-    background-color: darken(#eee, 5%);
+    background-color: darken($triggerFieldListItemBackground, 7%);
   }
 }

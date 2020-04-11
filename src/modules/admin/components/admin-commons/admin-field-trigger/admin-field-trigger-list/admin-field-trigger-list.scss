@@ -1,7 +1,10 @@
+@import '../../../../../../variables.scss';
+
 .admin-field-trigger-list {
+  border-right: 1px solid darken($triggerFieldListItemBackground, 3%);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 260px;
+  width: 228px;
   max-height: 650px;
 }
