@@ -59,7 +59,12 @@ const AdminArrayInput: React.FC<arrayInputDataProps> = ({
 
   return (
     <div className="admin-array-input">
-      <p className="admin-array-input__title">{arrayInputName}</p>
+      <div className="admin-array-input__title__container">
+        <p className="admin-array-input__title">{arrayInputName}</p>
+        <div className="admin-button__container">
+          <FontAwesomeIcon icon={['fas', 'plus-square']} size="sm" onClick={addField} />
+        </div>
+      </div>
       <div className="admin-array-input__list">
         {handleArrayInputChange &&
           dataValue.map((item: any, index: number) => {
@@ -82,9 +87,6 @@ const AdminArrayInput: React.FC<arrayInputDataProps> = ({
               </div>
             );
           })}
-      </div>
-      <div className="admin-button__container">
-        <button onClick={addField}>Añadir campo</button>
       </div>
     </div>
   );

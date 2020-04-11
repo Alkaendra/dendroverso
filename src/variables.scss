@@ -43,3 +43,8 @@
 $boxShadowGrey: #bbb;
 $bluishBlack: #282c34;
 $tenousGrey: rgba(224, 224, 224, 1);
+
+.admin-form__save-button {
+  background-color: $boxShadowGrey;
+  padding: 0.5rem;
+}

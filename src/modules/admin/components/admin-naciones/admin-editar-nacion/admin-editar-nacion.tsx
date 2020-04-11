@@ -1,10 +1,10 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, Fragment } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { debounce } from 'lodash';
 import { db } from '../../../../core/Firestore';
 import AdminForm from '../../admin-commons/admin-forms/admin-form';
 import { Nation, nationConstructor } from '../nation.model';
-import { obtainFormDataConstructor } from '../../../admin';
+import { obtainFormDataConstructor, obtainDataForTriggerFieldList } from '../../../admin';
 
 const initialState = {
   nation: null,
@@ -55,13 +55,18 @@ const AdminEditarNacion: React.FC = () => {
   return (
     <div className="admin-editar-nacion">
       {state.nation && (
-        <AdminForm
-          dataForm={obtainFormattedData()}
-          entity={state.nation}
-          updateChangesInParentData={handleChangedData}
-        />
+        <Fragment>
+          <AdminForm
+            dataForm={obtainFormattedData()}
+            entity={state.nation}
+            triggerFieldListData={obtainDataForTriggerFieldList(obtainFormattedData())}
+            updateChangesInParentData={handleChangedData}
+          />
+          <button className="admin-form__save-button" onClick={() => handleSaveData()}>
+            Guardar
+          </button>
+        </Fragment>
       )}
-      <button onClick={() => handleSaveData()}>Guardar</button>
     </div>
   );
 };

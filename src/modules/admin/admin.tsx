@@ -161,3 +161,20 @@ export const obtainFormDataConstructor = (entityConstructor: { [s: string]: any 
 
   return entityModeller;
 };
+
+export const obtainDataForTriggerFieldList = (entityModeller: any[]) => {
+  let dataForTriggerFieldList: any[] = [];
+  entityModeller.forEach((dataField: any) => {
+    const name = dataField.name;
+    let triggerField: any;
+
+    triggerField = {
+      name: 'arrayInputBuildData' in dataField ? dataField.arrayInputName : name,
+      quantity: 'arrayInputBuildData' in dataField ? dataField.defaultValue.length : 1,
+    };
+
+    dataForTriggerFieldList = [...dataForTriggerFieldList, triggerField];
+  });
+
+  return dataForTriggerFieldList;
+};
