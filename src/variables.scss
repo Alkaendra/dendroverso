@@ -39,10 +39,29 @@
   line-height: 1.5rem;
 }
 
+@mixin customScrollBar {
+  /* width */
+  &::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: $trackGrey;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $black;
+  }
+}
+
 // Colores
-$boxShadowGrey: #bbb;
+$black: #000;
 $bluishBlack: #282c34;
+$boxShadowGrey: #bbb;
 $tenousGrey: rgba(224, 224, 224, 1);
+$trackGrey: #ddd;
 
 .admin-form__save-button {
   background-color: $boxShadowGrey;

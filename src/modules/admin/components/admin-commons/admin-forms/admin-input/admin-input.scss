@@ -30,25 +30,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
     line-height: 1.6;
-    &::-webkit-scrollbar {
-      width: 1px;
-    }
-
-    /* Track */
-    &::-webkit-scrollbar-track {
-      width: 1px;
-      background: #999;
-    }
-
-    /* Handle */
-    &::-webkit-scrollbar-thumb {
-      background: black;
-    }
-
-    /* Handle on hover */
-    &::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
+    @include customScrollBar;
   }
   select {
     border: unset;
