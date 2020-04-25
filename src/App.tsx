@@ -7,6 +7,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import logo from './logo.svg';
 import './App.scss';
 import modules from './modules';
+import BasicSectorGenerator from './modules/core/utils/basic-sector-generator';
 
 library.add(fas);
 
@@ -31,6 +32,7 @@ const App = () => {
             ))}
           </ul>
         </header>
+        <BasicSectorGenerator />
         <div className="App-content">
           {modules.map(module => (
             <Route {...module.routeProps} key={module.name} />
