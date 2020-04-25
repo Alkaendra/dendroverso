@@ -41,7 +41,7 @@ export const generatePlanetaryBiologicalTrait = () => {
         populationMod: -3,
       };
       break;
-    case randomNumber > 61 && randomNumber <= 75:
+    case randomNumber > 60 && randomNumber <= 75:
       planetaryBiologicalTrait = {
         label: 'Biomas Inestables',
         energeticResourcesMod: 0,
@@ -50,7 +50,7 @@ export const generatePlanetaryBiologicalTrait = () => {
         populationMod: -1,
       };
       break;
-    case randomNumber > 76 && randomNumber <= 90:
+    case randomNumber > 75 && randomNumber <= 90:
       planetaryBiologicalTrait = {
         label: 'Megafauna',
         energeticResourcesMod: 0,

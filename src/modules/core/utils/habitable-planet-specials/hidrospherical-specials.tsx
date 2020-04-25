@@ -41,7 +41,7 @@ export const generatePlanetaryHidrosphericalTrait = () => {
         populationMod: 0,
       };
       break;
-    case randomNumber > 61 && randomNumber <= 75:
+    case randomNumber > 60 && randomNumber <= 75:
       planetaryHidrosphericalTrait = {
         label: 'Océanos Metálicos',
         energeticResourcesMod: 0,
@@ -50,7 +50,7 @@ export const generatePlanetaryHidrosphericalTrait = () => {
         populationMod: -1,
       };
       break;
-    case randomNumber > 76 && randomNumber <= 90:
+    case randomNumber > 75 && randomNumber <= 90:
       planetaryHidrosphericalTrait = {
         label: 'Equilibrio Oceánico',
         energeticResourcesMod: 0,

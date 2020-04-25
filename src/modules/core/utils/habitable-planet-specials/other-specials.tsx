@@ -41,7 +41,7 @@ export const generatePlanetaryOtherTrait = () => {
         populationMod: +1,
       };
       break;
-    case randomNumber > 61 && randomNumber <= 80:
+    case randomNumber > 60 && randomNumber <= 80:
       planetaryOtherTrait = {
         label: 'Asteroides Explotables Accesibles',
         energeticResourcesMod: 1,

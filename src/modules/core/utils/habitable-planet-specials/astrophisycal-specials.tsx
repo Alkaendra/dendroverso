@@ -41,7 +41,7 @@ export const generatePlanetaryAstrophisycalTrait = () => {
         populationMod: 0,
       };
       break;
-    case randomNumber > 61 && randomNumber <= 75:
+    case randomNumber > 60 && randomNumber <= 75:
       planetaryAstrophisycalTrait = {
         label: 'Órbita Excéntrica',
         energeticResourcesMod: 2,
@@ -50,7 +50,7 @@ export const generatePlanetaryAstrophisycalTrait = () => {
         populationMod: -1,
       };
       break;
-    case randomNumber > 76 && randomNumber <= 90:
+    case randomNumber > 75 && randomNumber <= 90:
       planetaryAstrophisycalTrait = {
         label: 'Eclipticidad Excéntrica',
         energeticResourcesMod: 2,

@@ -1,5 +1,13 @@
 //  Genéricos
 
+import { generatePlanetaryGeophisycalSpecialTrait } from './habitable-planet-specials/geophisycal-specials';
+import { generatePlanetaryAtmosphericalTrait } from './habitable-planet-specials/atmospherical-specials';
+import { generatePlanetaryAstrophisycalTrait } from './habitable-planet-specials/astrophisycal-specials';
+import { generatePlanetaryBiologicalTrait } from './habitable-planet-specials/biological-specials';
+import { generatePlanetaryHidrosphericalTrait } from './habitable-planet-specials/hidrospherical-specials';
+import { generatePlanetaryOtherTrait } from './habitable-planet-specials/other-specials';
+import { generatePlanetaryMoons } from './habitable-planet-specials/moon-specials';
+
 export const generateRandomNumber = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min);
 
 // Planetas
@@ -96,6 +104,33 @@ export const habitablePlanetType: any = (result: number) => ({
   }),
 });
 
+export const habitablePlanetSize: any = (result: number) => ({
+  ...(result > 0 &&
+    result <= 10 && {
+      label: 'Mini Tierra',
+      size: 'mT',
+    }),
+  ...(result > 10 &&
+    result <= 30 && {
+      label: 'Sub Tierra',
+      size: 'sT',
+    }),
+  ...(result > 30 &&
+    result <= 60 && {
+      label: 'Tierra',
+      size: 'T',
+    }),
+  ...(result > 60 &&
+    result <= 98 && {
+      label: 'Super Tierra',
+      size: 'ST',
+    }),
+  ...(result > 98 && {
+    label: 'Núcleo Desnudo de Gigante Gaseoso',
+    size: 'NdGg',
+  }),
+});
+
 export const resourcesOcurrenceTable: any = {
   0: { label: 'Muy deficitario', value: 0 },
   1: { label: 'Deficitario', value: 1 },
@@ -109,29 +144,19 @@ export const resourcesOcurrenceTable: any = {
 export const obtainRangedValue = (
   min: number,
   max: number,
-  mods: any,
+  modByPlanetType: number,
   rangeMin: number,
   rangeMax: number,
+  specialMod: number,
   table: any,
 ) => {
-  let modValue = generateRandomNumber(rangeMin, rangeMax) + mods;
+  let modValue = generateRandomNumber(rangeMin, rangeMax) + modByPlanetType + specialMod;
   if (modValue > max) {
     modValue = max;
   } else if (modValue < min) {
     modValue = min;
   }
   return table[modValue];
-};
-
-export const getResourceValue = (modByPlanetType: number) => {
-  let modValue = generateRandomNumber(1, 3) + modByPlanetType;
-  if (modValue > 6) {
-    modValue = 6;
-  } else if (modValue < 0) {
-    modValue = 0;
-  }
-
-  return resourcesOcurrenceTable[modValue];
 };
 
 export const habitablePlanetPopulationTable: any = {
@@ -145,16 +170,6 @@ export const habitablePlanetPopulationTable: any = {
   7: { label: 'Cientos de Millones', value: 7 },
   8: { label: 'Miles de Millones', value: 8 },
   9: { label: 'Decenas de miles de Millones', value: 9 },
-};
-
-export const getHabitablePlanetPopulation = (modByPlanetType: number) => {
-  let modValue = generateRandomNumber(1, 7) + modByPlanetType;
-  if (modValue > 9) {
-    modValue = 9;
-  } else if (modValue < 0) {
-    modValue = 0;
-  }
-  return habitablePlanetPopulationTable[modValue];
 };
 
 export const generateSystemConnectivity = (randomNumber: number) => {
@@ -190,6 +205,63 @@ export const generateSystemConnectivity = (randomNumber: number) => {
         valiangric: 0,
       };
   }
+};
+
+export const obtainSpecialTrait = (randomNumber: any, specialFunc: any, previousMods: any) => {
+  let special = specialFunc;
+  if (randomNumber > 85) {
+    previousMods.energeticResourcesMod += special.energeticResourcesMod;
+    previousMods.foodResourcesMod += special.foodResourcesMod;
+    previousMods.industrialResourcesMod += special.industrialResourcesMod;
+    previousMods.populationMod += special.populationMod;
+    previousMods.specials = [...previousMods.specials, special.label];
+  }
+  if (!randomNumber) {
+    previousMods.energeticResourcesMod += special.energeticResourcesMod;
+    previousMods.foodResourcesMod += special.foodResourcesMod;
+    previousMods.industrialResourcesMod += special.industrialResourcesMod;
+    previousMods.populationMod += special.populationMod;
+    if (special.mayorMoons || special.minorMoons) {
+      previousMods.specials = [
+        ...previousMods.specials,
+        {
+          ...(special.mayorMoons > 0 && {
+            mayorMoons: special.mayorMoons,
+          }),
+          ...(special.minorMoons > 0 && {
+            minorMoons: special.minorMoons,
+          }),
+        },
+      ];
+    }
+  }
+  return previousMods;
+};
+
+export const obtainAllModsFromSpecials = () => {
+  let allMods: any = {
+    energeticResourcesMod: 0,
+    foodResourcesMod: 0,
+    industrialResourcesMod: 0,
+    populationMod: 0,
+    specials: [],
+  };
+
+  const randomForAtmosphericalSpecial = generateRandomNumber(1, 100);
+  allMods = obtainSpecialTrait(randomForAtmosphericalSpecial, generatePlanetaryAtmosphericalTrait(), allMods);
+  const randomForAstrophisycalSpecial = generateRandomNumber(1, 100);
+  allMods = obtainSpecialTrait(randomForAstrophisycalSpecial, generatePlanetaryAstrophisycalTrait(), allMods);
+  const randomForBiologicalSpecial = generateRandomNumber(1, 100);
+  allMods = obtainSpecialTrait(randomForBiologicalSpecial, generatePlanetaryBiologicalTrait(), allMods);
+  const randomForGeophisycalSpecial = generateRandomNumber(1, 100);
+  allMods = obtainSpecialTrait(randomForGeophisycalSpecial, generatePlanetaryGeophisycalSpecialTrait(), allMods);
+  const randomForHidrosphericalSpecial = generateRandomNumber(1, 100);
+  allMods = obtainSpecialTrait(randomForHidrosphericalSpecial, generatePlanetaryHidrosphericalTrait(), allMods);
+  allMods = obtainSpecialTrait(null, generatePlanetaryMoons(), allMods);
+  const randomForOtherSpecial = generateRandomNumber(1, 100);
+  allMods = obtainSpecialTrait(randomForOtherSpecial, generatePlanetaryOtherTrait(), allMods);
+
+  return allMods;
 };
 
 // Sectores

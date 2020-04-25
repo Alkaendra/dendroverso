@@ -41,7 +41,7 @@ export const generatePlanetaryAtmosphericalTrait = () => {
         populationMod: +1,
       };
       break;
-    case randomNumber > 61 && randomNumber <= 75:
+    case randomNumber > 60 && randomNumber <= 75:
       planetaryAtmosphericalTrait = {
         label: 'Presión Inusual',
         energeticResourcesMod: 1,
@@ -50,7 +50,7 @@ export const generatePlanetaryAtmosphericalTrait = () => {
         populationMod: -1,
       };
       break;
-    case randomNumber > 76 && randomNumber <= 90:
+    case randomNumber > 75 && randomNumber <= 90:
       planetaryAtmosphericalTrait = {
         label: 'Contaminante Atmosférico Natural',
         energeticResourcesMod: 0,
