@@ -1,0 +1,363 @@
+[
+  {
+    "type": {
+      "energeticResourcesMod": 0,
+      "foodResourcesMod": 2,
+      "industrialResourcesMod": 1,
+      "populationMod": 1,
+      "specialTraitMod": 1,
+      "typeCode": "CON",
+      "type": "Continental"
+    },
+    "size": {
+      "label": "Super Tierra",
+      "size": "ST"
+    },
+    "energeticResources": {
+      "label": "Autosuficiente",
+      "value": 3
+    },
+    "foodResources": {
+      "label": "Exportador",
+      "value": 4
+    },
+    "industrialResources": {
+      "label": "Exportador",
+      "value": 4
+    },
+    "population": {
+      "label": "Millares",
+      "value": 2
+    },
+    "systemConnectivity": {
+      "stable": 1,
+      "unstable": 0,
+      "valiangric": 0
+    },
+    "specials": ["Sistemas Tormentosos Permanentes"]
+  },
+  {
+    "type": {
+      "energeticResourcesMod": 1,
+      "foodResourcesMod": 1,
+      "industrialResourcesMod": 1,
+      "populationMod": -1,
+      "specialTraitMod": 1,
+      "typeCode": "SEL",
+      "type": "Selvático"
+    },
+    "size": {
+      "label": "Núcleo Desnudo de Gigante Gaseoso",
+      "size": "NdGg"
+    },
+    "energeticResources": {
+      "label": "Autosuficiente",
+      "value": 3
+    },
+    "foodResources": {
+      "label": "Importador",
+      "value": 2
+    },
+    "industrialResources": {
+      "label": "Exportador",
+      "value": 4
+    },
+    "population": {
+      "label": "Decenas de millones",
+      "value": 6
+    },
+    "systemConnectivity": {
+      "stable": 1,
+      "unstable": 2,
+      "valiangric": 0
+    },
+    "specials": []
+  },
+  {
+    "type": {
+      "energeticResourcesMod": 0,
+      "foodResourcesMod": -2,
+      "industrialResourcesMod": 2,
+      "populationMod": -2,
+      "specialTraitMod": 0,
+      "typeCode": "ALP",
+      "type": "Alpino"
+    },
+    "size": {
+      "label": "Super Tierra",
+      "size": "ST"
+    },
+    "energeticResources": {
+      "label": "Deficitario",
+      "value": 1
+    },
+    "foodResources": {
+      "label": "Muy deficitario",
+      "value": 0
+    },
+    "industrialResources": {
+      "label": "Exportador",
+      "value": 4
+    },
+    "population": {
+      "label": "Decenas",
+      "value": 0
+    },
+    "systemConnectivity": {
+      "stable": 0,
+      "unstable": 0,
+      "valiangric": 0
+    },
+    "specials": ["Inhóspito"]
+  },
+  {
+    "type": {
+      "energeticResourcesMod": 1,
+      "foodResourcesMod": 1,
+      "industrialResourcesMod": 1,
+      "populationMod": -1,
+      "specialTraitMod": 1,
+      "typeCode": "SEL",
+      "type": "Selvático"
+    },
+    "size": {
+      "label": "Sub Tierra",
+      "size": "sT"
+    },
+    "energeticResources": {
+      "label": "Autosuficiente",
+      "value": 3
+    },
+    "foodResources": {
+      "label": "Importador",
+      "value": 2
+    },
+    "industrialResources": {
+      "label": "Superavitario",
+      "value": 6
+    },
+    "population": {
+      "label": "Millones",
+      "value": 5
+    },
+    "systemConnectivity": {
+      "stable": 1,
+      "unstable": 0,
+      "valiangric": 0
+    },
+    "specials": [
+      "Biomas Inestables",
+      "Yacimientos Exóticos",
+      {
+        "minorMoons": 3
+      }
+    ]
+  },
+  {
+    "type": {
+      "energeticResourcesMod": 1,
+      "foodResourcesMod": -2,
+      "industrialResourcesMod": 1,
+      "populationMod": -2,
+      "specialTraitMod": 0,
+      "typeCode": "BOR",
+      "type": "Boreal"
+    },
+    "size": {
+      "label": "Super Tierra",
+      "size": "ST"
+    },
+    "energeticResources": {
+      "label": "Exportador",
+      "value": 4
+    },
+    "foodResources": {
+      "label": "Muy deficitario",
+      "value": 0
+    },
+    "industrialResources": {
+      "label": "Superavitario",
+      "value": 6
+    },
+    "population": {
+      "label": "Cientos de Millones",
+      "value": 7
+    },
+    "systemConnectivity": {
+      "stable": 0,
+      "unstable": 0,
+      "valiangric": 0
+    },
+    "specials": [
+      {
+        "mayorMoons": 2
+      }
+    ]
+  },
+  {
+    "type": {
+      "energeticResourcesMod": 1,
+      "foodResourcesMod": 3,
+      "industrialResourcesMod": -1,
+      "populationMod": -1,
+      "specialTraitMod": 2,
+      "typeCode": "OCE",
+      "type": "Oceánico"
+    },
+    "size": {
+      "label": "Sub Tierra",
+      "size": "sT"
+    },
+    "energeticResources": {
+      "label": "Excedentario",
+      "value": 5
+    },
+    "foodResources": {
+      "label": "Superavitario",
+      "value": 6
+    },
+    "industrialResources": {
+      "label": "Exportador",
+      "value": 4
+    },
+    "population": {
+      "label": "Centenas de miles",
+      "value": 4
+    },
+    "systemConnectivity": {
+      "stable": 3,
+      "unstable": 1,
+      "valiangric": 0
+    },
+    "specials": [
+      "Anillos",
+      "Utopía Ecológica",
+      "Vulcanismo Extremo",
+      {
+        "mayorMoons": 1
+      }
+    ]
+  },
+  {
+    "type": {
+      "energeticResourcesMod": 1,
+      "foodResourcesMod": -2,
+      "industrialResourcesMod": 1,
+      "populationMod": -2,
+      "specialTraitMod": 0,
+      "typeCode": "BOR",
+      "type": "Boreal"
+    },
+    "size": {
+      "label": "Super Tierra",
+      "size": "ST"
+    },
+    "energeticResources": {
+      "label": "Exportador",
+      "value": 4
+    },
+    "foodResources": {
+      "label": "Muy deficitario",
+      "value": 0
+    },
+    "industrialResources": {
+      "label": "Exportador",
+      "value": 4
+    },
+    "population": {
+      "label": "Millones",
+      "value": 5
+    },
+    "systemConnectivity": {
+      "stable": 1,
+      "unstable": 1,
+      "valiangric": 0
+    },
+    "specials": []
+  },
+  {
+    "type": {
+      "energeticResourcesMod": 0,
+      "foodResourcesMod": -2,
+      "industrialResourcesMod": 2,
+      "populationMod": -2,
+      "specialTraitMod": 0,
+      "typeCode": "ALP",
+      "type": "Alpino"
+    },
+    "size": {
+      "label": "Tierra",
+      "size": "T"
+    },
+    "energeticResources": {
+      "label": "Excedentario",
+      "value": 5
+    },
+    "foodResources": {
+      "label": "Muy deficitario",
+      "value": 0
+    },
+    "industrialResources": {
+      "label": "Exportador",
+      "value": 4
+    },
+    "population": {
+      "label": "Decenas",
+      "value": 0
+    },
+    "systemConnectivity": {
+      "stable": 1,
+      "unstable": 2,
+      "valiangric": 0
+    },
+    "specials": [
+      "Gravedad no estándar",
+      "Estaciones Extremas",
+      {
+        "minorMoons": 1
+      }
+    ]
+  },
+  {
+    "type": {
+      "energeticResourcesMod": 1,
+      "foodResourcesMod": -2,
+      "industrialResourcesMod": 2,
+      "populationMod": -2,
+      "specialTraitMod": 0,
+      "typeCode": "ARI",
+      "type": "Árido"
+    },
+    "size": {
+      "label": "Super Tierra",
+      "size": "ST"
+    },
+    "energeticResources": {
+      "label": "Excedentario",
+      "value": 5
+    },
+    "foodResources": {
+      "label": "Deficitario",
+      "value": 1
+    },
+    "industrialResources": {
+      "label": "Superavitario",
+      "value": 6
+    },
+    "population": {
+      "label": "Decenas de miles",
+      "value": 3
+    },
+    "systemConnectivity": {
+      "stable": 2,
+      "unstable": 1,
+      "valiangric": 0
+    },
+    "specials": [
+      {
+        "mayorMoons": 1
+      },
+      "Asteroides Explotables Accesibles"
+    ]
+  }
+]

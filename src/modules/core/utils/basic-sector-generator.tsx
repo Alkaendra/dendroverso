@@ -11,6 +11,8 @@ import {
   habitablePlanetPopulationTable,
   habitablePlanetSize,
 } from './utils';
+import { generateRandomNames } from './nomenclator/nomenclator-generator';
+import { lenguaTaodara } from './nomenclator/nomenclator-saomico';
 
 const BasicSectorGenerator: React.FC = () => {
   const [habitablePlanets, setHabitablePlanets] = useState([]);
@@ -65,6 +67,7 @@ const BasicSectorGenerator: React.FC = () => {
       planetData = [...planetData, planet];
     }
     console.log(planetData, obtainAllModsFromSpecials());
+    console.log(generateRandomNames(lenguaTaodara, 20));
     setHabitablePlanets(planetData);
   }, []);
   return <div>{JSON.stringify(habitablePlanets)}</div>;
