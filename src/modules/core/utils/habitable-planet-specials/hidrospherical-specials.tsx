@@ -1,73 +1,87 @@
-import { generateRandomNumber } from '../utils';
+import { obtainDataFromTable } from '../utils';
+
+export const planetaryHidrosphericalTraitTable = [
+  {
+    max: 15,
+    min: 0,
+    valueToReturn: {
+      label: 'Océanos Hipersalinos',
+      energeticResourcesMod: 0,
+      foodResourcesMod: -1,
+      industrialResourcesMod: 1,
+      populationMod: -2,
+    },
+  },
+  {
+    max: 30,
+    min: 16,
+    valueToReturn: {
+      label: 'Química Oceánica Inusual',
+      energeticResourcesMod: 0,
+      foodResourcesMod: -1,
+      industrialResourcesMod: 1,
+      populationMod: -1,
+    },
+  },
+  {
+    max: 50,
+    min: 31,
+    valueToReturn: {
+      label: 'Estaciones Extremas',
+      energeticResourcesMod: 2,
+      foodResourcesMod: 0,
+      industrialResourcesMod: 0,
+      populationMod: -2,
+    },
+  },
+  {
+    max: 60,
+    min: 51,
+    valueToReturn: {
+      label: 'Mareas Extremas',
+      energeticResourcesMod: 2,
+      foodResourcesMod: -1,
+      industrialResourcesMod: 0,
+      populationMod: -1,
+    },
+  },
+  {
+    max: 65,
+    min: 61,
+    valueToReturn: {
+      label: 'Océanos Metálicos',
+      energeticResourcesMod: 0,
+      foodResourcesMod: -1,
+      industrialResourcesMod: 2,
+      populationMod: -1,
+    },
+  },
+  {
+    max: 70,
+    min: 66,
+    valueToReturn: {
+      label: 'Equilibrio Oceánico',
+      energeticResourcesMod: 1,
+      foodResourcesMod: 2,
+      industrialResourcesMod: 0,
+      populationMod: 1,
+    },
+  },
+  {
+    max: 80,
+    min: 71,
+    valueToReturn: {
+      label: 'Acuíferos Ingentes',
+      energeticResourcesMod: 1,
+      foodResourcesMod: 2,
+      industrialResourcesMod: 0,
+      populationMod: 2,
+    },
+  },
+];
 
 export const generatePlanetaryHidrosphericalTrait = () => {
-  const randomNumber: number = generateRandomNumber(1, 100);
-  let planetaryHidrosphericalTrait: any = {};
+  let dataToSend: any = obtainDataFromTable(planetaryHidrosphericalTraitTable);
 
-  switch (true) {
-    case randomNumber > 0 && randomNumber <= 15:
-      planetaryHidrosphericalTrait = {
-        label: 'Océanos Hipersalinos',
-        energeticResourcesMod: 0,
-        foodResourcesMod: -1,
-        industrialResourcesMod: 2,
-        populationMod: -2,
-      };
-      break;
-    case randomNumber > 15 && randomNumber <= 30:
-      planetaryHidrosphericalTrait = {
-        label: 'Química Oceánica Inusual',
-        energeticResourcesMod: 0,
-        foodResourcesMod: -1,
-        industrialResourcesMod: 2,
-        populationMod: -1,
-      };
-      break;
-    case randomNumber > 30 && randomNumber <= 45:
-      planetaryHidrosphericalTrait = {
-        label: 'Estaciones Extremas',
-        energeticResourcesMod: 2,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 0,
-        populationMod: -2,
-      };
-      break;
-    case randomNumber > 45 && randomNumber <= 60:
-      planetaryHidrosphericalTrait = {
-        label: 'Mareas Extremas',
-        energeticResourcesMod: 2,
-        foodResourcesMod: -1,
-        industrialResourcesMod: 0,
-        populationMod: 0,
-      };
-      break;
-    case randomNumber > 60 && randomNumber <= 75:
-      planetaryHidrosphericalTrait = {
-        label: 'Océanos Metálicos',
-        energeticResourcesMod: 0,
-        foodResourcesMod: -1,
-        industrialResourcesMod: 2,
-        populationMod: -1,
-      };
-      break;
-    case randomNumber > 75 && randomNumber <= 90:
-      planetaryHidrosphericalTrait = {
-        label: 'Equilibrio Oceánico',
-        energeticResourcesMod: 0,
-        foodResourcesMod: 2,
-        industrialResourcesMod: 1,
-        populationMod: 1,
-      };
-      break;
-    case randomNumber > 90:
-      planetaryHidrosphericalTrait = {
-        label: 'Acuíferos Ingentes',
-        energeticResourcesMod: 1,
-        foodResourcesMod: 2,
-        industrialResourcesMod: 0,
-        populationMod: 2,
-      };
-      break;
-  }
-  return planetaryHidrosphericalTrait;
+  return dataToSend;
 };

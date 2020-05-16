@@ -1,110 +1,131 @@
-import { generateRandomNumber } from '../utils';
+import { obtainDataFromTable } from '../utils';
+
+export const planetaryGeophisycalTraitTable = [
+  {
+    max: 15,
+    min: 0,
+    valueToReturn: {
+      label: 'Yacimientos Ubérrimos',
+      energeticResourcesMod: 1,
+      foodResourcesMod: 0,
+      industrialResourcesMod: 3,
+      populationMod: 0,
+    },
+  },
+  {
+    max: 30,
+    min: 16,
+    valueToReturn: {
+      label: 'Yacimientos Exóticos',
+      energeticResourcesMod: 0,
+      foodResourcesMod: 0,
+      industrialResourcesMod: 1,
+      populationMod: 1,
+    },
+  },
+  {
+    max: 50,
+    min: 31,
+    valueToReturn: {
+      label: 'Erosión Caótica',
+      energeticResourcesMod: 0,
+      foodResourcesMod: 0,
+      industrialResourcesMod: 1,
+      populationMod: -1,
+    },
+  },
+  {
+    max: 60,
+    min: 51,
+    valueToReturn: {
+      label: 'Pobreza Mineral',
+      energeticResourcesMod: 0,
+      foodResourcesMod: 0,
+      industrialResourcesMod: -2,
+      populationMod: 0,
+    },
+  },
+  {
+    max: 70,
+    min: 61,
+    valueToReturn: {
+      label: 'Campo Magnético Inestable',
+      energeticResourcesMod: 1,
+      foodResourcesMod: 0,
+      industrialResourcesMod: 0,
+      populationMod: -2,
+    },
+  },
+  {
+    max: 80,
+    min: 71,
+    valueToReturn: {
+      label: 'Cavernoso',
+      energeticResourcesMod: 0,
+      foodResourcesMod: 0,
+      industrialResourcesMod: 2,
+      populationMod: 2,
+    },
+  },
+  {
+    max: 90,
+    min: 81,
+    valueToReturn: {
+      label: 'Geotermal',
+      energeticResourcesMod: 2,
+      foodResourcesMod: 0,
+      industrialResourcesMod: 1,
+      populationMod: 0,
+    },
+  },
+  {
+    max: 100,
+    min: 91,
+    valueToReturn: {
+      label: 'Vulcanismo Extremo',
+      energeticResourcesMod: 1,
+      foodResourcesMod: 0,
+      industrialResourcesMod: 0,
+      populationMod: -2,
+    },
+  },
+  {
+    max: 110,
+    min: 101,
+    valueToReturn: {
+      label: 'Tectónica Inestable',
+      energeticResourcesMod: 1,
+      foodResourcesMod: 0,
+      industrialResourcesMod: 0,
+      populationMod: -2,
+    },
+  },
+  {
+    max: 120,
+    min: 111,
+    valueToReturn: {
+      label: 'Núcleo Rígido',
+      energeticResourcesMod: -2,
+      foodResourcesMod: 0,
+      industrialResourcesMod: -2,
+      populationMod: 0,
+    },
+  },
+  {
+    max: 125,
+    min: 121,
+    valueToReturn: {
+      label: 'Planeta Binario',
+      energeticResourcesMod: 3,
+      foodResourcesMod: 0,
+      industrialResourcesMod: 3,
+      populationMod: 2,
+    },
+  },
+];
 
 export const generatePlanetaryGeophisycalSpecialTrait = () => {
-  const randomNumber: number = generateRandomNumber(1, 100);
-  let planetaryGeophisycalSpecialTrait: any = {};
+  let dataToSend: any = obtainDataFromTable(planetaryGeophisycalTraitTable);
 
-  switch (true) {
-    case randomNumber > 0 && randomNumber <= 5:
-      planetaryGeophisycalSpecialTrait = {
-        label: 'Yacimientos Ubérrimos',
-        energeticResourcesMod: 1,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 3,
-        populationMod: 0,
-      };
-      break;
-    case randomNumber > 5 && randomNumber <= 15:
-      planetaryGeophisycalSpecialTrait = {
-        label: 'Yacimientos Exóticos',
-        energeticResourcesMod: 0,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 2,
-        populationMod: 1,
-      };
-      break;
-    case randomNumber > 15 && randomNumber <= 25:
-      planetaryGeophisycalSpecialTrait = {
-        label: 'Erosión Caótica',
-        energeticResourcesMod: 0,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 1,
-        populationMod: -1,
-      };
-      break;
-    case randomNumber > 25 && randomNumber <= 35:
-      planetaryGeophisycalSpecialTrait = {
-        label: 'Pobreza Mineral',
-        energeticResourcesMod: 0,
-        foodResourcesMod: 0,
-        industrialResourcesMod: -2,
-        populationMod: 0,
-      };
-      break;
-    case randomNumber > 35 && randomNumber <= 45:
-      planetaryGeophisycalSpecialTrait = {
-        label: 'Campo Magnético Inestable',
-        energeticResourcesMod: 1,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 0,
-        populationMod: -2,
-      };
-      break;
-    case randomNumber > 45 && randomNumber <= 55:
-      planetaryGeophisycalSpecialTrait = {
-        label: 'Cavernoso',
-        energeticResourcesMod: 0,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 2,
-        populationMod: 2,
-      };
-      break;
-    case randomNumber > 55 && randomNumber <= 65:
-      planetaryGeophisycalSpecialTrait = {
-        label: 'Geotermal',
-        energeticResourcesMod: 2,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 1,
-        populationMod: 0,
-      };
-      break;
-    case randomNumber > 65 && randomNumber <= 75:
-      planetaryGeophisycalSpecialTrait = {
-        label: 'Vulcanismo Extremo',
-        energeticResourcesMod: 2,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 0,
-        populationMod: -2,
-      };
-      break;
-    case randomNumber > 75 && randomNumber <= 85:
-      planetaryGeophisycalSpecialTrait = {
-        label: 'Tectónica Inestable',
-        energeticResourcesMod: 1,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 1,
-        populationMod: -2,
-      };
-      break;
-    case randomNumber > 85 && randomNumber <= 95:
-      planetaryGeophisycalSpecialTrait = {
-        label: 'Núcleo Rígido',
-        energeticResourcesMod: -2,
-        foodResourcesMod: 0,
-        industrialResourcesMod: -2,
-        populationMod: 0,
-      };
-      break;
-    case randomNumber > 95:
-      planetaryGeophisycalSpecialTrait = {
-        label: 'Planeta Binario',
-        energeticResourcesMod: 3,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 3,
-        populationMod: 2,
-      };
-      break;
-  }
-
-  return planetaryGeophisycalSpecialTrait;
+  return dataToSend;
 };

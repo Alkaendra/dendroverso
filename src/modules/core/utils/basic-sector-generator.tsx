@@ -10,9 +10,12 @@ import {
   resourcesOcurrenceTable,
   habitablePlanetPopulationTable,
   habitablePlanetSize,
+  generatePlanetaryDevelopment,
+  obtainFinalEconomicalDevelopment,
 } from './utils';
 import { generateRandomNames } from './nomenclator/nomenclator-generator';
 import { lenguaTaodara } from './nomenclator/nomenclator-saomico';
+import { generateTotalPlacesOfInterest } from './habitable-planet-specials/places-of-interest-specials';
 
 const BasicSectorGenerator: React.FC = () => {
   const [habitablePlanets, setHabitablePlanets] = useState([]);
@@ -23,15 +26,25 @@ const BasicSectorGenerator: React.FC = () => {
     for (let i = 0; i <= habitablePlanetsNumber; i += 1) {
       const planet: any = {};
       const planetarySpecials = obtainAllModsFromSpecials();
-      planet.type = habitablePlanetType(generateRandomNumber(1, 100));
+      planet.type = habitablePlanetType(generateRandomNumber(1, 110));
       planet.size = habitablePlanetSize(generateRandomNumber(1, 100));
+      planet.population = obtainRangedValue(
+        0,
+        9,
+        planet.type.populationMod,
+        3,
+        7,
+        planetarySpecials.populationMod,
+        habitablePlanetPopulationTable,
+      );
+      planet.development = generatePlanetaryDevelopment(planet.population);
       planet.energeticResources = obtainRangedValue(
         0,
         6,
         planet.type.energeticResourcesMod,
         1,
-        3,
-        planetarySpecials.energeticResourcesMod,
+        2,
+        planetarySpecials.energeticResourcesMod - planet.development.industrialDevelopment,
         resourcesOcurrenceTable,
       );
       planet.foodResources = obtainRangedValue(
@@ -48,21 +61,19 @@ const BasicSectorGenerator: React.FC = () => {
         6,
         planet.type.industrialResourcesMod,
         1,
-        3,
-        planetarySpecials.industrialResourcesMod,
+        2,
+        planetarySpecials.industrialResourcesMod - planet.development.industrialDevelopment,
         resourcesOcurrenceTable,
       );
-      planet.population = obtainRangedValue(
-        0,
-        9,
-        planet.type.populationMod,
-        3,
-        7,
-        planetarySpecials.populationMod,
-        habitablePlanetPopulationTable,
+      planet.development.economicalDevelopment = obtainFinalEconomicalDevelopment(
+        planet.energeticResources.economicalMod,
+        planet.foodResources.economicalMod,
+        planet.industrialResources.economicalMod,
+        planet.development.economicalDevelopment,
       );
       planet.systemConnectivity = generateSystemConnectivity(generateRandomNumber(1, 100));
       planet.specials = planetarySpecials.specials;
+      planet.placesOfInterest = generateTotalPlacesOfInterest(planet.type);
 
       planetData = [...planetData, planet];
     }

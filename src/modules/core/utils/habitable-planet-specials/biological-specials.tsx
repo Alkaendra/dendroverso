@@ -1,73 +1,98 @@
-import { generateRandomNumber } from '../utils';
+import { obtainDataFromTable } from '../utils';
+
+export const planetaryBiologicalTraitTable = [
+  {
+    max: 15,
+    min: 0,
+    valueToReturn: {
+      label: 'Flora Exótica',
+      energeticResourcesMod: 0,
+      foodResourcesMod: 1,
+      industrialResourcesMod: 0,
+      populationMod: -1,
+    },
+  },
+  {
+    max: 30,
+    min: 16,
+    valueToReturn: {
+      label: 'Fauna Exótica',
+      energeticResourcesMod: 0,
+      foodResourcesMod: 0,
+      industrialResourcesMod: 1,
+      populationMod: -1,
+    },
+  },
+  {
+    max: 50,
+    min: 31,
+    valueToReturn: {
+      label: 'Biomas Inestables',
+      energeticResourcesMod: 0,
+      foodResourcesMod: -1,
+      industrialResourcesMod: 1,
+      populationMod: -1,
+    },
+  },
+  {
+    max: 60,
+    min: 51,
+    valueToReturn: {
+      label: 'Megafauna',
+      energeticResourcesMod: 0,
+      foodResourcesMod: 1,
+      industrialResourcesMod: 1,
+      populationMod: -1,
+    },
+  },
+  {
+    max: 70,
+    min: 61,
+    valueToReturn: {
+      label: 'Microbiota Hostil',
+      energeticResourcesMod: 0,
+      foodResourcesMod: 0,
+      industrialResourcesMod: -1,
+      populationMod: -3,
+    },
+  },
+  {
+    max: 75,
+    min: 71,
+    valueToReturn: {
+      label: 'Presencia de Aberraciones',
+      energeticResourcesMod: 0,
+      foodResourcesMod: 0,
+      industrialResourcesMod: 0,
+      populationMod: -3,
+    },
+  },
+  {
+    max: 85,
+    min: 76,
+    valueToReturn: {
+      label: 'Inhóspito',
+      energeticResourcesMod: 0,
+      foodResourcesMod: 0,
+      industrialResourcesMod: 0,
+      populationMod: -3,
+    },
+  },
+  {
+    max: 95,
+    min: 86,
+    valueToReturn: {
+      label: 'Utopía Ecológica',
+      energeticResourcesMod: 0,
+      foodResourcesMod: 3,
+      industrialResourcesMod: 0,
+      populationMod: 3,
+    },
+  },
+];
 
 export const generatePlanetaryBiologicalTrait = () => {
-  const randomNumber: number = generateRandomNumber(1, 100);
-  let planetaryBiologicalTrait: any = {};
+  let dataToSend: any = obtainDataFromTable(planetaryBiologicalTraitTable);
 
-  switch (true) {
-    case randomNumber > 0 && randomNumber <= 15:
-      planetaryBiologicalTrait = {
-        label: 'Flora Exótica',
-        energeticResourcesMod: 0,
-        foodResourcesMod: 1,
-        industrialResourcesMod: 0,
-        populationMod: -1,
-      };
-      break;
-    case randomNumber > 15 && randomNumber <= 30:
-      planetaryBiologicalTrait = {
-        label: 'Fauna Exótica',
-        energeticResourcesMod: 0,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 1,
-        populationMod: -1,
-      };
-      break;
-    case randomNumber > 30 && randomNumber <= 45:
-      planetaryBiologicalTrait = {
-        label: 'Utopía Ecológica',
-        energeticResourcesMod: 0,
-        foodResourcesMod: 3,
-        industrialResourcesMod: 0,
-        populationMod: 3,
-      };
-      break;
-    case randomNumber > 45 && randomNumber <= 60:
-      planetaryBiologicalTrait = {
-        label: 'Inhóspito',
-        energeticResourcesMod: 0,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 0,
-        populationMod: -3,
-      };
-      break;
-    case randomNumber > 60 && randomNumber <= 75:
-      planetaryBiologicalTrait = {
-        label: 'Biomas Inestables',
-        energeticResourcesMod: 0,
-        foodResourcesMod: -1,
-        industrialResourcesMod: 1,
-        populationMod: -1,
-      };
-      break;
-    case randomNumber > 75 && randomNumber <= 90:
-      planetaryBiologicalTrait = {
-        label: 'Megafauna',
-        energeticResourcesMod: 0,
-        foodResourcesMod: 1,
-        industrialResourcesMod: 1,
-        populationMod: -1,
-      };
-      break;
-    case randomNumber > 90:
-      planetaryBiologicalTrait = {
-        label: 'Presencia de Aberraciones',
-        energeticResourcesMod: 0,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 0,
-        populationMod: -3,
-      };
-      break;
-  }
-  return planetaryBiologicalTrait;
+  return dataToSend;
 };
