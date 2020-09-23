@@ -1,0 +1,752 @@
+[
+  {
+    "astrophisycs": {
+      "axisTilt": 48.05,
+      "density": {
+        "label": "Núcleo Sólido",
+        "value": 1.81
+      },
+      "escapeVelocity": 13.39,
+      "gravity": {
+        "g": 1.61,
+        "gravityIhMod": -2
+      },
+      "magnetoSphere": 0.62,
+      "mass": 1.28,
+      "radio": {
+        "radioComparedToEarth": 0.89,
+        "radioInKMS": 5670.1900000000005
+      },
+      "size": {
+        "cod": "T",
+        "label": "Tierra"
+      }
+    },
+    "size": "T",
+    "atmosphere": {
+      "albedo": 0.16,
+      "greenhouseEffect": 0.44,
+      "IHmod": -1,
+      "surfacePressure": 0.57,
+      "type": "Ligera"
+    },
+    "hidrosphere": {
+      "hidrosphereIHMod": 1,
+      "value": 9,
+      "percentage": 83.25
+    },
+    "IH": -1,
+    "surfaceTemperature": 65.12,
+    "type": {
+      "terrainTypes": ["Archipiélago", "Isla", "Mar", "Océano"],
+      "subTypeCode": "OCE",
+      "subType": "Oceánico"
+    },
+    "systemConnectivity": {
+      "stable": 2,
+      "unstable": 3,
+      "valiangric": 1
+    },
+    "specials": [],
+    "placesOfInterest": [],
+    "stars": {
+      "stars": [
+        {
+          "decimalClass": 2,
+          "color": "#ff4000",
+          "luminosity": 0.406,
+          "luminosity_aleatorio": 53.22,
+          "luminosity_class": "V",
+          "luminosity_icon": 2,
+          "mass": 0.42,
+          "radius": 0.902,
+          "spectralType": "M"
+        }
+      ],
+      "accLuminosity": 0.406,
+      "accRadius": 0.902
+    },
+    "orbitDistanceInUAs": 1.15
+  },
+  {
+    "astrophisycs": {
+      "axisTilt": 38.94,
+      "density": {
+        "label": "Núcleo Fundido",
+        "value": 0.89
+      },
+      "escapeVelocity": null,
+      "gravity": {
+        "g": null,
+        "gravityIhMod": 2
+      },
+      "magnetoSphere": 0.92,
+      "mass": null,
+      "radio": {
+        "radioInKMS": null
+      },
+      "size": {
+        "cod": "mT",
+        "label": "Mini Tierra"
+      }
+    },
+    "size": "mT",
+    "atmosphere": {
+      "albedo": 0.15,
+      "greenhouseEffect": 0.46,
+      "IHmod": -1,
+      "surfacePressure": 0.52,
+      "type": "Ligera"
+    },
+    "hidrosphere": {
+      "hidrosphereIHMod": -3,
+      "value": -1,
+      "percentage": 0.14
+    },
+    "IH": -1,
+    "surfaceTemperature": 42.5,
+    "type": {
+      "terrainTypes": ["Cavernas", "Colinas", "Páramo", "Lago", "Montañas", "Túneles"],
+      "subTypeCode": "ARI",
+      "subType": "Árido"
+    },
+    "systemConnectivity": {
+      "stable": 0,
+      "unstable": 0,
+      "valiangric": 0
+    },
+    "specials": [],
+    "placesOfInterest": [],
+    "stars": {
+      "stars": [
+        {
+          "decimalClass": 6,
+          "color": "#ff4000",
+          "luminosity": 0.318,
+          "luminosity_aleatorio": 19.42,
+          "luminosity_class": "V",
+          "luminosity_icon": 4,
+          "mass": 0.26,
+          "radius": 0.726,
+          "spectralType": "M"
+        }
+      ],
+      "accLuminosity": 0.318,
+      "accRadius": 0.726
+    },
+    "orbitDistanceInUAs": 0.83
+  },
+  {
+    "astrophisycs": {
+      "axisTilt": 7.43,
+      "density": {
+        "label": "Núcleo Fundido",
+        "value": 0.93
+      },
+      "escapeVelocity": 15.75,
+      "gravity": {
+        "g": 1.36,
+        "gravityIhMod": -1
+      },
+      "magnetoSphere": 1.26,
+      "mass": 2.89,
+      "radio": {
+        "radioComparedToEarth": 1.46,
+        "radioInKMS": 9301.66
+      },
+      "size": {
+        "cod": "T",
+        "label": "Tierra"
+      }
+    },
+    "size": "T",
+    "atmosphere": {
+      "albedo": 0.15,
+      "greenhouseEffect": 0.43,
+      "IHmod": -1,
+      "surfacePressure": 0.55,
+      "type": "Ligera"
+    },
+    "hidrosphere": {
+      "hidrosphereIHMod": -3,
+      "value": 1,
+      "percentage": 2.84
+    },
+    "IH": -4,
+    "surfaceTemperature": 62.94,
+    "type": {
+      "terrainTypes": ["Cavernas", "Colinas", "Páramo", "Lago", "Montañas", "Túneles"],
+      "subTypeCode": "ARI",
+      "subType": "Árido"
+    },
+    "systemConnectivity": {
+      "stable": 2,
+      "unstable": 2,
+      "valiangric": 0
+    },
+    "specials": [
+      {
+        "mayorMoons": 1
+      }
+    ],
+    "placesOfInterest": [],
+    "stars": {
+      "stars": [
+        {
+          "decimalClass": 6,
+          "color": "#ffb000",
+          "luminosity": 0.594,
+          "luminosity_aleatorio": 85.04,
+          "luminosity_class": "V",
+          "luminosity_icon": 2,
+          "mass": 0.62,
+          "radius": 1.008,
+          "spectralType": "K"
+        },
+        {
+          "decimalClass": 3,
+          "color": "#ff4000",
+          "luminosity": 0.257,
+          "luminosity_aleatorio": 101.39,
+          "luminosity_class": "VI",
+          "luminosity_icon": 1,
+          "mass": 0.17,
+          "radius": 0.468,
+          "spectralType": "M"
+        }
+      ],
+      "accLuminosity": 0.851,
+      "accRadius": 1.476
+    },
+    "orbitDistanceInUAs": 1.63
+  },
+  {
+    "astrophisycs": {
+      "axisTilt": 33.05,
+      "density": {
+        "label": "Núcleo Fundido",
+        "value": 0.87
+      },
+      "escapeVelocity": 5.84,
+      "gravity": {
+        "g": 0.49,
+        "gravityIhMod": -2
+      },
+      "magnetoSphere": 1.07,
+      "mass": 0.15,
+      "radio": {
+        "radioComparedToEarth": 0.56,
+        "radioInKMS": 3567.76
+      },
+      "size": {
+        "cod": "sT",
+        "label": "Sub Tierra"
+      }
+    },
+    "size": "sT",
+    "atmosphere": {
+      "albedo": 0.02,
+      "greenhouseEffect": 0.32,
+      "IHmod": -2,
+      "surfacePressure": 0.14,
+      "type": "Tenue"
+    },
+    "hidrosphere": {
+      "hidrosphereIHMod": -3,
+      "value": 1,
+      "percentage": 2.1
+    },
+    "IH": -6,
+    "surfaceTemperature": 37.19,
+    "type": {
+      "terrainTypes": ["Cavernas", "Colinas", "Páramo", "Lago", "Montañas", "Túneles"],
+      "subTypeCode": "ARI",
+      "subType": "Árido"
+    },
+    "systemConnectivity": {
+      "stable": 3,
+      "unstable": 3,
+      "valiangric": 0
+    },
+    "specials": [
+      {
+        "minorMoons": 2
+      }
+    ],
+    "placesOfInterest": [],
+    "stars": {
+      "stars": [
+        {
+          "decimalClass": 0,
+          "color": "#ffff19",
+          "luminosity": 1.05,
+          "luminosity_aleatorio": 57.71,
+          "luminosity_class": "V",
+          "luminosity_icon": 2,
+          "mass": 1.1,
+          "radius": 1.25,
+          "spectralType": "G"
+        },
+        {
+          "decimalClass": 9,
+          "color": "#ff4000",
+          "luminosity": 0.252,
+          "luminosity_aleatorio": 71.42,
+          "luminosity_class": "V",
+          "luminosity_icon": 2,
+          "mass": 0.14,
+          "radius": 0.594,
+          "spectralType": "M"
+        }
+      ],
+      "accLuminosity": 1.302,
+      "accRadius": 1.8439999999999999
+    },
+    "orbitDistanceInUAs": 1.6
+  },
+  {
+    "astrophisycs": {
+      "axisTilt": 1.19,
+      "density": {
+        "label": "Núcleo Fundido",
+        "value": 0.96
+      },
+      "escapeVelocity": 35.17,
+      "gravity": {
+        "g": 3.08,
+        "gravityIhMod": -2
+      },
+      "magnetoSphere": 1.06,
+      "mass": 31.76,
+      "radio": {
+        "radioComparedToEarth": 3.21,
+        "radioInKMS": 20450.91
+      },
+      "size": {
+        "cod": "NdGg",
+        "label": "Núcleo Desnudo de Gigante Gaseoso"
+      }
+    },
+    "size": "NdGg",
+    "atmosphere": {
+      "albedo": 0.1,
+      "greenhouseEffect": 0.23,
+      "IHmod": -2,
+      "surfacePressure": 0.26,
+      "type": "Tenue"
+    },
+    "hidrosphere": {
+      "hidrosphereIHMod": 1,
+      "value": 5,
+      "percentage": 42.38
+    },
+    "IH": -2,
+    "surfaceTemperature": 59.74,
+    "type": {
+      "terrainTypes": ["Bosque", "Cavernas", "Manglar", "Océano", "Selva"],
+      "subTypeCode": "PAL",
+      "subType": "Palustre"
+    },
+    "systemConnectivity": {
+      "stable": 2,
+      "unstable": 2,
+      "valiangric": 0
+    },
+    "specials": [
+      "Presencia de Aberraciones",
+      {
+        "mayorMoons": 1
+      }
+    ],
+    "placesOfInterest": [],
+    "stars": {
+      "stars": [
+        {
+          "decimalClass": 3,
+          "color": "#ffb000",
+          "luminosity": 0.702,
+          "luminosity_aleatorio": 81.21,
+          "luminosity_class": "V",
+          "luminosity_icon": 2,
+          "mass": 0.71,
+          "radius": 1.029,
+          "spectralType": "K"
+        }
+      ],
+      "accLuminosity": 0.702,
+      "accRadius": 1.029
+    },
+    "orbitDistanceInUAs": 1.45
+  },
+  {
+    "astrophisycs": {
+      "axisTilt": 76.81,
+      "density": {
+        "label": "Núcleo Fundido",
+        "value": 0.85
+      },
+      "escapeVelocity": 24.44,
+      "gravity": {
+        "g": 2.01,
+        "gravityIhMod": -2
+      },
+      "magnetoSphere": 0.89,
+      "mass": 11.32,
+      "radio": {
+        "radioComparedToEarth": 2.37,
+        "radioInKMS": 15099.27
+      },
+      "size": {
+        "cod": "ST",
+        "label": "Super Tierra"
+      }
+    },
+    "size": "ST",
+    "atmosphere": {
+      "albedo": 0.55,
+      "greenhouseEffect": 0.93,
+      "IHmod": 1,
+      "surfacePressure": 1.92,
+      "type": "Densa"
+    },
+    "hidrosphere": {
+      "hidrosphereIHMod": -2,
+      "value": 2,
+      "percentage": 9.98
+    },
+    "IH": -2,
+    "surfaceTemperature": 37.75,
+    "type": {
+      "terrainTypes": ["Cavernas", "Colinas", "Páramo", "Lago", "Montañas", "Túneles"],
+      "subTypeCode": "ARI",
+      "subType": "Árido"
+    },
+    "systemConnectivity": {
+      "stable": 1,
+      "unstable": 0,
+      "valiangric": 0
+    },
+    "specials": ["Irradiado", "Megafauna"],
+    "placesOfInterest": [],
+    "stars": {
+      "stars": [
+        {
+          "decimalClass": 0,
+          "color": "#ffff99",
+          "luminosity": 1.69,
+          "luminosity_aleatorio": 44.32,
+          "luminosity_class": "V",
+          "luminosity_icon": 2,
+          "mass": 1.6,
+          "radius": 1.77,
+          "spectralType": "F"
+        }
+      ],
+      "accLuminosity": 1.69,
+      "accRadius": 1.77
+    },
+    "orbitDistanceInUAs": 1.88
+  },
+  {
+    "astrophisycs": {
+      "axisTilt": 35.35,
+      "density": {
+        "label": "Núcleo Sólido",
+        "value": 2.02
+      },
+      "escapeVelocity": 26.23,
+      "gravity": {
+        "g": 3.33,
+        "gravityIhMod": -2
+      },
+      "magnetoSphere": 0.21,
+      "mass": 9.08,
+      "radio": {
+        "radioComparedToEarth": 1.65,
+        "radioInKMS": 10512.15
+      },
+      "size": {
+        "cod": "ST",
+        "label": "Super Tierra"
+      }
+    },
+    "size": "ST",
+    "atmosphere": {
+      "albedo": 0.12,
+      "greenhouseEffect": 0.42,
+      "IHmod": -1,
+      "surfacePressure": 0.75,
+      "type": "Ligera"
+    },
+    "hidrosphere": {
+      "hidrosphereIHMod": -1,
+      "value": 3,
+      "percentage": 21.9
+    },
+    "IH": -3,
+    "surfaceTemperature": 36.72,
+    "type": {
+      "terrainTypes": ["Cavernas", "Colinas", "Desierto", "Dunas", "Montañas", "Túneles"],
+      "subTypeCode": "DES",
+      "subType": "Desértico"
+    },
+    "systemConnectivity": {
+      "stable": 3,
+      "unstable": 3,
+      "valiangric": 1
+    },
+    "specials": ["Inclinación Inusual del eje (77°)", "Vulcanismo Extremo", "Restos de Batalla"],
+    "placesOfInterest": [],
+    "stars": {
+      "stars": [
+        {
+          "decimalClass": 1,
+          "color": "#ff4000",
+          "luminosity": 0.428,
+          "luminosity_aleatorio": 36.85,
+          "luminosity_class": "V",
+          "luminosity_icon": 2,
+          "mass": 0.46,
+          "radius": 0.946,
+          "spectralType": "M"
+        },
+        {
+          "decimalClass": 0,
+          "color": "#ffff99",
+          "luminosity": 1.69,
+          "luminosity_aleatorio": 90.61,
+          "luminosity_class": "V",
+          "luminosity_icon": 2,
+          "mass": 1.6,
+          "radius": 1.77,
+          "spectralType": "F"
+        }
+      ],
+      "accLuminosity": 2.118,
+      "accRadius": 2.716
+    },
+    "orbitDistanceInUAs": 2.04
+  },
+  {
+    "astrophisycs": {
+      "axisTilt": 44.93,
+      "density": {
+        "label": "Núcleo Sólido",
+        "value": 1.98
+      },
+      "escapeVelocity": null,
+      "gravity": {
+        "g": null,
+        "gravityIhMod": 2
+      },
+      "magnetoSphere": 0.47,
+      "mass": null,
+      "radio": {
+        "radioInKMS": null
+      },
+      "size": {
+        "cod": "mT",
+        "label": "Mini Tierra"
+      }
+    },
+    "size": "mT",
+    "atmosphere": {
+      "albedo": 0.12,
+      "greenhouseEffect": 0.48,
+      "IHmod": -1,
+      "surfacePressure": 0.46,
+      "type": "Ligera"
+    },
+    "hidrosphere": {
+      "hidrosphereIHMod": -2,
+      "value": 2,
+      "percentage": 13.89
+    },
+    "IH": 0,
+    "surfaceTemperature": 35.96,
+    "type": {
+      "terrainTypes": ["Cavernas", "Colinas", "Desierto", "Dunas", "Montañas", "Túneles"],
+      "subTypeCode": "DES",
+      "subType": "Desértico"
+    },
+    "systemConnectivity": {
+      "stable": 3,
+      "unstable": 3,
+      "valiangric": 0
+    },
+    "specials": [
+      "Biomas Inestables",
+      {
+        "mayorMoons": 1
+      }
+    ],
+    "placesOfInterest": [],
+    "stars": {
+      "stars": [
+        {
+          "decimalClass": 5,
+          "color": "#ff4000",
+          "luminosity": 0.34,
+          "luminosity_aleatorio": 63.54,
+          "luminosity_class": "V",
+          "luminosity_icon": 2,
+          "mass": 0.3,
+          "radius": 0.77,
+          "spectralType": "M"
+        }
+      ],
+      "accLuminosity": 0.34,
+      "accRadius": 0.77
+    },
+    "orbitDistanceInUAs": 0.81
+  },
+  {
+    "astrophisycs": {
+      "axisTilt": 65.03,
+      "density": {
+        "label": "Núcleo Sólido",
+        "value": 1.99
+      },
+      "escapeVelocity": 22.4,
+      "gravity": {
+        "g": 2.83,
+        "gravityIhMod": -2
+      },
+      "magnetoSphere": 0.38,
+      "mass": 5.7,
+      "radio": {
+        "radioComparedToEarth": 1.42,
+        "radioInKMS": 9046.82
+      },
+      "size": {
+        "cod": "T",
+        "label": "Tierra"
+      }
+    },
+    "size": "T",
+    "atmosphere": {
+      "albedo": 0.18,
+      "greenhouseEffect": 0.48,
+      "IHmod": -1,
+      "surfacePressure": 0.5,
+      "type": "Ligera"
+    },
+    "hidrosphere": {
+      "hidrosphereIHMod": 1,
+      "value": 8,
+      "percentage": 65.49
+    },
+    "IH": -1,
+    "surfaceTemperature": 5.3,
+    "type": {
+      "terrainTypes": ["Bosque", "Cavernas", "Colinas", "Llanura", "Mar", "Manglar", "Montañas", "Océano", "Selva"],
+      "subTypeCode": "CON",
+      "subType": "Continental"
+    },
+    "systemConnectivity": {
+      "stable": 2,
+      "unstable": 2,
+      "valiangric": 0
+    },
+    "specials": [],
+    "placesOfInterest": [],
+    "stars": {
+      "stars": [
+        {
+          "decimalClass": 0,
+          "color": "#ffb000",
+          "luminosity": 0.81,
+          "luminosity_aleatorio": 71.55,
+          "luminosity_class": "V",
+          "luminosity_icon": 2,
+          "mass": 0.8,
+          "radius": 1.05,
+          "spectralType": "K"
+        },
+        {
+          "decimalClass": 5,
+          "color": "#ff4000",
+          "luminosity": 0.34,
+          "luminosity_aleatorio": 34.31,
+          "luminosity_class": "V",
+          "luminosity_icon": 4,
+          "mass": 0.3,
+          "radius": 0.77,
+          "spectralType": "M"
+        }
+      ],
+      "accLuminosity": 1.1500000000000001,
+      "accRadius": 1.82
+    },
+    "orbitDistanceInUAs": 1.18
+  },
+  {
+    "astrophisycs": {
+      "axisTilt": 29.45,
+      "density": {
+        "label": "Núcleo Fundido",
+        "value": 1.09
+      },
+      "escapeVelocity": 14.48,
+      "gravity": {
+        "g": 1.35,
+        "gravityIhMod": -1
+      },
+      "magnetoSphere": 1.28,
+      "mass": 2.08,
+      "radio": {
+        "radioComparedToEarth": 1.24,
+        "radioInKMS": 7900.04
+      },
+      "size": {
+        "cod": "T",
+        "label": "Tierra"
+      }
+    },
+    "size": "T",
+    "atmosphere": {
+      "albedo": 0.11,
+      "greenhouseEffect": 0.46,
+      "IHmod": -1,
+      "surfacePressure": 0.56,
+      "type": "Ligera"
+    },
+    "hidrosphere": {
+      "hidrosphereIHMod": 1,
+      "value": 8,
+      "percentage": 69.56
+    },
+    "IH": 0,
+    "surfaceTemperature": 44.19,
+    "type": {
+      "terrainTypes": ["Cavernas", "Colinas", "Mar", "Manglar", "Océano", "Selva", "Túneles"],
+      "subTypeCode": "SEL",
+      "subType": "Selvático"
+    },
+    "systemConnectivity": {
+      "stable": 2,
+      "unstable": 2,
+      "valiangric": 0
+    },
+    "specials": ["Fauna Exótica"],
+    "placesOfInterest": [],
+    "stars": {
+      "stars": [
+        {
+          "decimalClass": 5,
+          "color": "#ffff99",
+          "luminosity": 1.37,
+          "luminosity_aleatorio": 64.89,
+          "luminosity_class": "V",
+          "luminosity_icon": 2,
+          "mass": 1.35,
+          "radius": 1.535,
+          "spectralType": "F"
+        }
+      ],
+      "accLuminosity": 1.37,
+      "accRadius": 1.535
+    },
+    "orbitDistanceInUAs": 1.74
+  }
+]

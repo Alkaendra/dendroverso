@@ -194,7 +194,7 @@ export const obtainPhenomenonLocation = (planetType: any) => {
   const randomNumber = generateRandomNumber(1, 100);
   const location: any = {
     ...(randomNumber < 70 && {
-      final: planetType.terrainTypes[generateRandomNumber(1, planetType.terrainTypes.length)],
+      final: planetType.terrainTypes[generateRandomNumber(0, planetType.terrainTypes.length - 1)],
     }),
     ...(randomNumber >= 70 &&
       randomNumber < 95 && {

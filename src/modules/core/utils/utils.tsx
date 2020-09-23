@@ -14,6 +14,31 @@ export const generateRandomNumber = (min: number, max: number) => Math.floor(Mat
 export const generateRandomFloat = (min: number, max: number) =>
   parseFloat((Math.random() * (max - min) + min).toFixed(2));
 
+export const obtainHexCode = (numberValue: number): string => {
+  if (numberValue < 10) {
+    numberValue = 10;
+  }
+  if (numberValue > 15) {
+    numberValue = 15;
+  }
+  switch (numberValue) {
+    case 10:
+      return 'A';
+    case 11:
+      return 'B';
+    case 12:
+      return 'C';
+    case 13:
+      return 'D';
+    case 14:
+      return 'E';
+    case 15:
+      return 'F';
+    default:
+      return 'G';
+  }
+};
+
 export const obtainDataFromTable: any = (data: any) => {
   const randomFactor = generateRandomNumber(0, data[data.length - 1].max);
   let valueToReturn = {};
@@ -186,7 +211,7 @@ export const habitablePlanetSize: any = (result: number) => ({
   }),
 });
 
-export const resourcesOcurrenceTable: any = {
+export const finalResourcesOcurrenceTable: any = {
   0: { economicalMod: -1, label: 'Muy deficitario', value: 0 },
   1: { economicalMod: -1, label: 'Deficitario', value: 1 },
   2: { economicalMod: -1, label: 'Importador', value: 2 },
@@ -194,6 +219,16 @@ export const resourcesOcurrenceTable: any = {
   4: { economicalMod: 1, label: 'Exportador', value: 4 },
   5: { economicalMod: 2, label: 'Excedentario', value: 5 },
   6: { economicalMod: 3, label: 'Superavitario', value: 6 },
+};
+
+export const resourcesOcurrenceTable: any = {
+  0: { economicalMod: -1, value: 0 },
+  1: { economicalMod: -1, value: 1 },
+  2: { economicalMod: -1, value: 2 },
+  3: { economicalMod: 0, value: 3 },
+  4: { economicalMod: 1, value: 4 },
+  5: { economicalMod: 2, value: 5 },
+  6: { economicalMod: 3, value: 6 },
 };
 
 export const obtainRangedValue = (
@@ -399,46 +434,6 @@ export const obtainAllModsFromSpecials = () => {
   allMods = obtainSpecialTrait(randomForSocialSpecial, generatePlanetarySocialTrait(), allMods);
 
   return allMods;
-};
-
-export const generatePlanetaryDevelopment = (population: any) => {
-  const returnRangedValue = (max: number, min: number, value: any) => {
-    if (value > max) {
-      return max;
-    }
-    if (value < min) {
-      return min;
-    }
-    return value;
-  };
-  return {
-    culturalDevelopment: returnRangedValue(6, 1, generateRandomNumber(1, 2) + population.culturalDevelopmentMod),
-    economicalDevelopment: returnRangedValue(6, 1, generateRandomNumber(1, 2) + population.economicalDevelopmentMod),
-    militaryDevelopment: returnRangedValue(6, 1, generateRandomNumber(1, 2) + population.militaryDevelopmentMod),
-    industrialDevelopment: returnRangedValue(6, 1, generateRandomNumber(1, 2) + population.industrialDevelopmentMod),
-    technologicalDevelopment: returnRangedValue(
-      6,
-      1,
-      generateRandomNumber(1, 2) + population.technologicalDevelopmentMod,
-    ),
-  };
-};
-
-export const obtainFinalEconomicalDevelopment = (
-  energyEconomicalMod: number,
-  foodEconomicalMod: number,
-  industryEconomicalMod: number,
-  economicCurrentValue: number,
-) => {
-  const totalEconomicalDevelopment =
-    economicCurrentValue + energyEconomicalMod + foodEconomicalMod + industryEconomicalMod;
-  if (totalEconomicalDevelopment > 6) {
-    return 6;
-  }
-  if (totalEconomicalDevelopment < 0) {
-    return 0;
-  }
-  return totalEconomicalDevelopment;
 };
 
 // Sectores

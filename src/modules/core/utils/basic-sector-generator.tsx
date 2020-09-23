@@ -10,15 +10,23 @@ import {
   resourcesOcurrenceTable,
   habitablePlanetPopulationTable,
   habitablePlanetSize,
+} from './utils';
+// import { generateRandomNames } from './nomenclator/nomenclator-generator';
+// import { lenguaTaodara } from './nomenclator/nomenclator-saomico';
+import { generateTotalPlacesOfInterest } from './habitable-planet-specials/places-of-interest-specials';
+import { reducingCosa, cosa } from './tables-data';
+// import { generateStarSystem } from './generate-sectors/generate-sectors';
+// import { obtainSystemOrbits, generateZH } from './generate-planets/generate-planets';
+import {
+  generateSectorHabitablePlanets,
   generatePlanetaryDevelopment,
   obtainFinalEconomicalDevelopment,
-} from './utils';
-import { generateRandomNames } from './nomenclator/nomenclator-generator';
-import { lenguaTaodara } from './nomenclator/nomenclator-saomico';
-import { generateTotalPlacesOfInterest } from './habitable-planet-specials/places-of-interest-specials';
+} from './generate-planets/generate-habitable-planets';
 
 const BasicSectorGenerator: React.FC = () => {
   const [habitablePlanets, setHabitablePlanets] = useState([]);
+  // let supraregion: any = {};
+  // let system: any = {};
   useEffect(() => {
     const sectorSystemsNumber: number = getNumberOfConnectedSystemsPerSector('medium');
     const habitablePlanetsNumber: number = getNumberOfSystemsWithHabitablePlanets(sectorSystemsNumber);
@@ -77,8 +85,18 @@ const BasicSectorGenerator: React.FC = () => {
 
       planetData = [...planetData, planet];
     }
-    console.log(planetData, obtainAllModsFromSpecials());
-    console.log(generateRandomNames(lenguaTaodara, 20));
+    // console.log(planetData, obtainAllModsFromSpecials());
+    // console.log(generateRandomNames(lenguaTaodara, 20));
+    console.log('VALORES ', reducingCosa(cosa));
+    // system = generateStarSystem(0);
+    // // this.obtainHabitablePlanets(this.supraregion[`Suprarregion`].connectedSystems);
+    // console.log(system);
+    // // supraregion = generateSuprarregionStarSystems();
+    // // console.log(supraregion);
+    let habPlanets: any[] = generateSectorHabitablePlanets(generateRandomNumber(5, 12));
+    console.log('PLANETAS ', habPlanets);
+    // console.log(generatePlanet(star.luminosity));
+
     setHabitablePlanets(planetData);
   }, []);
   return <div>{JSON.stringify(habitablePlanets)}</div>;
