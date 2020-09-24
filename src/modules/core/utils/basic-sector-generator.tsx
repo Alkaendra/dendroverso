@@ -11,10 +11,10 @@ import {
   habitablePlanetPopulationTable,
   habitablePlanetSize,
 } from './utils';
-// import { generateRandomNames } from './nomenclator/nomenclator-generator';
+import { generateRandomNames } from './nomenclator/nomenclator-generator';
+import { lenguaDarmuttana } from './nomenclator/nomenclator-darmuttano';
 // import { lenguaTaodara } from './nomenclator/nomenclator-saomico';
 import { generateTotalPlacesOfInterest } from './habitable-planet-specials/places-of-interest-specials';
-import { reducingCosa, cosa } from './tables-data';
 // import { generateStarSystem } from './generate-sectors/generate-sectors';
 // import { obtainSystemOrbits, generateZH } from './generate-planets/generate-planets';
 import {
@@ -86,8 +86,8 @@ const BasicSectorGenerator: React.FC = () => {
       planetData = [...planetData, planet];
     }
     // console.log(planetData, obtainAllModsFromSpecials());
-    // console.log(generateRandomNames(lenguaTaodara, 20));
-    console.log('VALORES ', reducingCosa(cosa));
+    console.log('NOMES', generateRandomNames(lenguaDarmuttana, 20));
+    // console.log('VALORES ', reducingCosa(cosa));
     // system = generateStarSystem(0);
     // // this.obtainHabitablePlanets(this.supraregion[`Suprarregion`].connectedSystems);
     // console.log(system);

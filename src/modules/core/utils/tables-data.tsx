@@ -10,18 +10,62 @@ export const dataValuesToGenerateTableRanges: any = {
   maximum: 100,
 };
 
-export const cosa = ['veryRare', 'veryRare', 'rare', 'minor', 'minor', 'normal', 'relevant', 'relevant'];
+export const cosa = [
+  {
+    dataToSend: 'agua',
+    freq: 'veryRare',
+  },
+  {
+    dataToSend: 'fanta',
+    freq: 'veryRare',
+  },
+  {
+    dataToSend: 'trina',
+    freq: 'rare',
+  },
+  {
+    dataToSend: 'pepsi',
+    freq: 'minor',
+  },
+  {
+    dataToSend: 'cherry',
+    freq: 'minor',
+  },
+  {
+    dataToSend: 'nukacola',
+    freq: 'normal',
+  },
+  {
+    dataToSend: 'poison',
+    freq: 'relevant',
+  },
+  {
+    dataToSend: 'nestea',
+    freq: 'relevant',
+  },
+];
 
-export const reducingCosa = (data: string[]) => {
+export const generateTableDataByFrequencies = (data: any[]) => {
   const toSend = data
-    .map((a: any) => dataValuesToGenerateTableRanges[a])
-    .reduce((nuevoArray, valor, index, viejoArray) => {
+    .map((a: any) => ({ dataToSend: a.dataToSend, freq: dataValuesToGenerateTableRanges[a.freq] }))
+    .reduce((nuevoArray: any, valor, index) => {
       if (index === 0) {
         nuevoArray = [
           ...nuevoArray,
           {
             min: 1,
-            max: valor,
+            max: valor.freq,
+            valueToReturn: valor.dataToSend,
+          },
+        ];
+        return nuevoArray;
+      } else if (index === 1) {
+        nuevoArray = [
+          ...nuevoArray,
+          {
+            min: nuevoArray[0].max + 1,
+            max: nuevoArray[0].max + valor.freq,
+            valueToReturn: valor.dataToSend,
           },
         ];
         return nuevoArray;
@@ -29,8 +73,9 @@ export const reducingCosa = (data: string[]) => {
         nuevoArray = [
           ...nuevoArray,
           {
-            min: [...viejoArray].splice(0, index).reduce((a, s) => a + s) + 1,
-            max: valor + [...viejoArray].splice(0, index).reduce((a, s) => a + s),
+            min: nuevoArray[index - 1].max + 1,
+            max: valor.freq + nuevoArray[index - 1].max + 1,
+            valueToReturn: valor.dataToSend,
           },
         ];
         return nuevoArray;

@@ -1,4 +1,5 @@
-import { generateRandomNumber } from '../utils';
+import { generateRandomNumber, obtainDataFromTable } from '../utils';
+import { generateTableDataByFrequencies } from '../tables-data';
 
 export interface LetterGroup {
   group: string;
@@ -67,9 +68,15 @@ export const addNewLetterGroupToArray = (letterGroup: string, targetArray: Lette
 export const getInitialCharacters = (
   wordlist: string[],
   languageVocals = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U', 'Ai', 'y', 'à'],
+  composedWordProbability: number,
+  composedWordMaxTerms: number,
   languageDiacritics: string[],
   maxLanguageDiacriticsPerWord: number,
   languageDiacriticReversal: string[],
+  interfixProbability: number,
+  interfixes: string[],
+  prefixProbability: number,
+  prefixes: string[],
   namesToGenerate: number,
 ) => {
   let initialVocals: LetterGroup[] = [];
@@ -139,7 +146,7 @@ export const getInitialCharacters = (
     finalConsonants: dataTabulator(finalConsonants),
   };
 
-  const generatewordWithLanguageFormattedData = (languageData: any) => {
+  const generatewordWithLanguageFormattedData = (languageData: any, bodyLength: number) => {
     const initialLetterAsVocalProbability = Math.floor(
       (languageData.initialVocals[languageData.initialVocals.length - 1].max * 100) /
         (languageData.initialVocals[languageData.initialVocals.length - 1].max +
@@ -158,7 +165,7 @@ export const getInitialCharacters = (
     } else {
       finalWord += obtainLetterGroupForWord(languageData.initialVocals);
     }
-    for (let i = 0; i <= 2; i++) {
+    for (let i = 0; i <= bodyLength; i++) {
       finalWord += obtainLetterGroupForWord(languageData.bodyConsonants);
       finalWord += obtainLetterGroupForWord(languageData.bodyVocals);
     }
@@ -195,10 +202,53 @@ export const getInitialCharacters = (
     return correctedData;
   };
 
+  const obtainComposedWord = (
+    composedWordMaxTerms: number,
+    composedWordProbability: number,
+    frequencies: any,
+    interfix: string,
+    prefix: string,
+  ) => {
+    let finalWord = `${prefix}${generatewordWithLanguageFormattedData(frequencies, 2)}`;
+    if (interfix !== '') {
+      finalWord = `${prefix}${generatewordWithLanguageFormattedData(
+        frequencies,
+        1,
+      )} ${interfix} ${generatewordWithLanguageFormattedData(frequencies, 1)}`;
+    } else {
+      let randomComposendWord = generateRandomNumber(1, 100);
+      if (randomComposendWord <= composedWordProbability) {
+        for (let i = 1; i < composedWordMaxTerms; i++) {
+          finalWord += ` ${generatewordWithLanguageFormattedData(frequencies, 1)}`;
+        }
+      }
+    }
+    return finalWord;
+  };
+
   const generateManyNames = (namesNumber: number) => {
     let names: string[] = [];
+    let interfix: string = '';
+    let prefix: string = '';
     for (let i = 0; i <= namesNumber; i++) {
-      names = [...names, generatewordWithLanguageFormattedData(frequency)];
+      if (prefixes) {
+        let randomPrefixAppearance = generateRandomNumber(1, 100);
+        prefix =
+          randomPrefixAppearance <= prefixProbability
+            ? obtainDataFromTable(generateTableDataByFrequencies(prefixes))
+            : '';
+      }
+      if (interfixes) {
+        let randomInterfixAppearance = generateRandomNumber(1, 100);
+        interfix =
+          randomInterfixAppearance <= interfixProbability
+            ? obtainDataFromTable(generateTableDataByFrequencies(interfixes))
+            : '';
+      }
+      names = [
+        ...names,
+        obtainComposedWord(composedWordMaxTerms, composedWordProbability, frequency, interfix, prefix),
+      ];
     }
     return maxLanguageDiacriticsControl(
       names,
@@ -215,9 +265,15 @@ export const generateRandomNames = (language: any, namesToGenerate: number) => {
   return getInitialCharacters(
     language.wordlist,
     language.vocals,
+    language.composedWordProbability,
+    language.composedWordMaxTerms,
     language.diacritics,
     language.diacriticsMaxPerWord,
     language.diacriticsReversal,
+    language.interfixProbability,
+    language.interfixes,
+    language.prefixProbability,
+    language.prefixes,
     namesToGenerate,
   );
 };
