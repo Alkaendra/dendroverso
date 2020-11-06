@@ -674,33 +674,34 @@ export const generateStarSystem = (i: any): Sistema => {
   return system;
 };
 
-export const generateSystemConnectivity: any | null = (randomNumber: number) => {
+export const generateSystemConnectivity: any | null = (randomNumber: number, habitable: boolean = false) => {
+  const finalRandomNumber = habitable ? randomNumber - 30 : randomNumber;
   switch (true) {
-    case randomNumber < 2:
+    case finalRandomNumber < 2:
       return {
         stable: generateRandomNumber(1, 3) + 1,
         unstable: generateRandomNumber(1, 3) + 1,
         valiangric: generateRandomNumber(1, 2),
       };
-    case randomNumber >= 2 && randomNumber < 30:
+    case finalRandomNumber >= 2 && finalRandomNumber < 30:
       return {
         stable: generateRandomNumber(1, 2) + 1,
         unstable: generateRandomNumber(1, 3),
         valiangric: generateRandomNumber(0, 1),
       };
-    case randomNumber >= 31 && randomNumber < 60:
+    case finalRandomNumber >= 31 && finalRandomNumber < 60:
       return {
         stable: generateRandomNumber(1, 2),
         unstable: generateRandomNumber(1, 2),
         valiangric: 0,
       };
-    case randomNumber >= 61 && randomNumber < 90:
+    case finalRandomNumber >= 61 && finalRandomNumber < 90:
       return {
         stable: generateRandomNumber(0, 1),
         unstable: generateRandomNumber(0, 1),
         valiangric: 0,
       };
-    case randomNumber >= 90:
+    case finalRandomNumber >= 90:
       return {
         stable: 0,
         unstable: generateRandomNumber(0, 1),

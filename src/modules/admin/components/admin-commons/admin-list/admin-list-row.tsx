@@ -21,12 +21,14 @@ const AdminListRow: React.FC<adminListRowProps> = ({ actions, data, deleteListIt
                 {Array.isArray(dataItem.name) ? (
                   <div className={`${nameOfClass} multi`}>
                     {dataItem.name.map(item => (
-                      <p key={item.name}>
+                      <p key={item.name || item.short}>
                         {'title' in item && (
-                          <span>
-                            {item.title} {item.name}
+                          <span className="admin-list__leader">
+                            <span className="admin-list__leader--title">{item.title}</span>
+                            <span className="admin-list__leader--name">{item.name}</span>
                           </span>
                         )}
+                        {'short' in item && <span>{item.short}</span>}
                       </p>
                     ))}
                   </div>

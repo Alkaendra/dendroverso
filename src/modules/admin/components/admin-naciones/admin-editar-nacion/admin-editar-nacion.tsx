@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, Fragment } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import { debounce } from 'lodash';
 import { db } from '../../../../core/Firestore';
 import AdminForm from '../../admin-commons/admin-forms/admin-form';
@@ -21,6 +21,7 @@ const reducer = (state: any, action: { type: any; data: any }) => {
 
 const AdminEditarNacion: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const history = useHistory();
   let match: any = useRouteMatch();
   useEffect(() => {
     const unsubscribe = db
@@ -48,6 +49,8 @@ const AdminEditarNacion: React.FC = () => {
       .update(state.nation as Nation);
   };
 
+  const handleCreateRegion = () => history.push(`/admin/naciones/${match.params.id}/crear-region/`);
+
   const obtainFormattedData = () => {
     return obtainFormDataConstructor(nationConstructor, state.nation);
   };
@@ -62,9 +65,14 @@ const AdminEditarNacion: React.FC = () => {
             triggerFieldListData={obtainDataForTriggerFieldList(obtainFormattedData())}
             updateChangesInParentData={handleChangedData}
           />
-          <button className="admin-form__save-button" onClick={() => handleSaveData()}>
-            Guardar
-          </button>
+          <div className="admin-form__buttons-bar">
+            <button className="admin-form__save-button" onClick={() => handleCreateRegion()}>
+              Crear Región
+            </button>
+            <button className="admin-form__save-button" onClick={() => handleSaveData()}>
+              Guardar
+            </button>
+          </div>
         </Fragment>
       )}
     </div>

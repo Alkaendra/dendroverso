@@ -11,9 +11,14 @@ const AdminNaciones: React.FC = () => {
         <section className="admin-naciones-nav">
           {adminNacionesActions &&
             adminNacionesActions.map(action => (
-              <div className="admin-naciones-nav__card" title={action.name} key={action.name}>
-                <Link to={`${match.path}${action.url}`}>{action.name}</Link>
-              </div>
+              <Link
+                className="admin-naciones-nav__card"
+                title={action.name}
+                key={action.name}
+                to={`${match.path}${action.url}`}
+              >
+                {action.name}
+              </Link>
             ))}
         </section>
         <div className="admin-content">

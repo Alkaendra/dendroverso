@@ -22,6 +22,8 @@ import {
   generatePlanetaryDevelopment,
   obtainFinalEconomicalDevelopment,
 } from './generate-planets/generate-habitable-planets';
+import { generateManyUnInhabitedSystems } from './generate-systems/generate-uninhabited-system';
+import { generateSector } from './generate-sectors/generate-sector';
 
 const BasicSectorGenerator: React.FC = () => {
   const [habitablePlanets, setHabitablePlanets] = useState([]);
@@ -95,11 +97,14 @@ const BasicSectorGenerator: React.FC = () => {
     // // console.log(supraregion);
     let habPlanets: any[] = generateSectorHabitablePlanets(generateRandomNumber(5, 12));
     console.log('PLANETAS ', habPlanets);
+    console.log('SISTEMA DESHABITADO', generateManyUnInhabitedSystems(generateRandomNumber(10, 12)));
+    console.log('SECTOR ', generateSector());
+    console.log(habitablePlanets);
     // console.log(generatePlanet(star.luminosity));
 
     setHabitablePlanets(planetData);
   }, []);
-  return <div>{JSON.stringify(habitablePlanets)}</div>;
+  return <div></div>;
 };
 
 export default BasicSectorGenerator;

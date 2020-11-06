@@ -122,6 +122,17 @@ export const planetaryGeophisycalTraitTable = [
       populationMod: 2,
     },
   },
+  {
+    max: 135,
+    min: 126,
+    valueToReturn: {
+      label: 'Lagos Subglaciares',
+      energeticResourcesMod: 0,
+      foodResourcesMod: 1,
+      industrialResourcesMod: 0,
+      populationMod: 1,
+    },
+  },
 ];
 
 export const generatePlanetaryGeophisycalSpecialTrait = () => {

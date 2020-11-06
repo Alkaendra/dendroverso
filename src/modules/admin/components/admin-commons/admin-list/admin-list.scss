@@ -37,6 +37,18 @@
         align-items: flex-start;
       }
     }
+    .admin-list__leader {
+      display: flex;
+      flex-direction: column;
+      .admin-list__leader--name {
+        font-weight: bold;
+      }
+      .admin-list__leader--title {
+        display: flex;
+        font-size: smaller;
+        margin-bottom: 3px;
+      }
+    }
   }
   .admin-list__header-row {
     @include tablesHeaderText('Roboto');

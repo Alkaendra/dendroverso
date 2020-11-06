@@ -112,7 +112,7 @@ export const habitablePlanet = (
     planetarySpecials.industrialResourcesMod,
     resourcesOcurrenceTable,
   );
-  planet.systemConnectivity = generateSystemConnectivity(generateRandomNumber(1, 100));
+  planet.systemConnectivity = generateSystemConnectivity(generateRandomNumber(1, 100), true);
   planet.population = obtainRangedValue(
     0,
     9,

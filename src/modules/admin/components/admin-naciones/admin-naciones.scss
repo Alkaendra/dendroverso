@@ -16,10 +16,8 @@
     font-size: 0.8rem;
     margin-bottom: 0.5rem;
     padding: 0.8rem;
-    a {
-      text-decoration: none;
-      text-transform: uppercase;
-    }
+    text-decoration: none;
+    text-transform: uppercase;
     &:hover {
       background-color: #666;
       border-bottom: 1px solid $boxShadowGrey;

@@ -8,11 +8,51 @@ import { generatePlanetaryHidrosphericalTrait } from './habitable-planet-special
 import { generatePlanetaryOtherTrait } from './habitable-planet-specials/other-specials';
 import { generatePlanetaryMoons } from './habitable-planet-specials/moon-specials';
 import { generatePlanetarySocialTrait } from './habitable-planet-specials/social.specials';
+import { Option } from '../../admin/components/admin-commons/admin-models/generic.model';
 
 export const generateRandomNumber = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min);
 
 export const generateRandomFloat = (min: number, max: number) =>
   parseFloat((Math.random() * (max - min) + min).toFixed(2));
+
+export const getRandomValueFromStringArray = (array: string[]) => array[Math.floor(Math.random() * array.length)];
+
+export const generateSelectOptions = (opciones: string[]) => {
+  let selectOptions: Option[] = [];
+  selectOptions = opciones.reduce((acc: any, current) => {
+    acc = [...acc, { name: current, value: current }];
+    return acc;
+  }, []);
+
+  return selectOptions;
+};
+
+export const convertToRoman = (num: number) => {
+  let romanNumbers: any = {
+    M: 1000,
+    CM: 900,
+    D: 500,
+    CD: 400,
+    C: 100,
+    XC: 90,
+    L: 50,
+    XL: 40,
+    X: 10,
+    IX: 9,
+    V: 5,
+    IV: 4,
+    I: 1,
+  };
+  let str = '';
+
+  for (const i of Object.keys(romanNumbers)) {
+    const q: number = Math.floor(num / romanNumbers[i]);
+    num -= q * romanNumbers[i];
+    str += i.repeat(q);
+  }
+
+  return str;
+};
 
 export const obtainHexCode = (numberValue: number): string => {
   if (numberValue < 10) {
@@ -342,33 +382,34 @@ export const habitablePlanetPopulationTable: any = {
   },
 };
 
-export const generateSystemConnectivity = (randomNumber: number) => {
+export const generateSystemConnectivity: any | null = (randomNumber: number, habitable: boolean = false) => {
+  const finalRandomNumber = habitable ? randomNumber - 30 : randomNumber;
   switch (true) {
-    case randomNumber < 2:
+    case finalRandomNumber < 2:
       return {
         stable: generateRandomNumber(1, 3) + 1,
         unstable: generateRandomNumber(1, 3) + 1,
         valiangric: generateRandomNumber(1, 2),
       };
-    case randomNumber >= 2 && randomNumber < 30:
+    case finalRandomNumber >= 2 && finalRandomNumber < 30:
       return {
         stable: generateRandomNumber(1, 2) + 1,
         unstable: generateRandomNumber(1, 3),
         valiangric: generateRandomNumber(0, 1),
       };
-    case randomNumber >= 31 && randomNumber < 60:
+    case finalRandomNumber >= 31 && finalRandomNumber < 60:
       return {
         stable: generateRandomNumber(1, 2),
         unstable: generateRandomNumber(1, 2),
         valiangric: 0,
       };
-    case randomNumber >= 61 && randomNumber < 90:
+    case finalRandomNumber >= 61 && finalRandomNumber < 90:
       return {
         stable: generateRandomNumber(0, 1),
         unstable: generateRandomNumber(0, 1),
         valiangric: 0,
       };
-    case randomNumber >= 90:
+    case finalRandomNumber >= 90:
       return {
         stable: 0,
         unstable: generateRandomNumber(0, 1),

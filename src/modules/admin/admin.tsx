@@ -5,6 +5,8 @@ import AdminNaciones from './components/admin-naciones/admin-naciones';
 import AdminNacionesList from './components/admin-naciones/admin-naciones-list/admin-naciones-list';
 import AdminEditarNacion from './components/admin-naciones/admin-editar-nacion/admin-editar-nacion';
 import AdminNacionesControl from './components/admin-naciones/admin-naciones-control/admin-naciones-control';
+import AdminCrearNacion from './components/admin-naciones/admin-crear-nacion/admin-crear-nacion';
+import AdminCrearRegion from './components/admin-regiones/admin-crear-region/admin-crear-region';
 
 const Admin = () => <AdminLayout />;
 export const adminMainTabs = [
@@ -69,10 +71,24 @@ export const adminNationUrls = [
   },
   {
     routeProps: {
+      path: '/crear-nacion',
+      component: AdminCrearNacion,
+    },
+    name: 'Crear Nación',
+  },
+  {
+    routeProps: {
       path: '/eliminar-nacion/:id',
       component: AdminNacionesList,
     },
     name: 'Regiones',
+  },
+  {
+    routeProps: {
+      path: '/:id/crear-region/',
+      component: AdminCrearRegion,
+    },
+    name: 'Crear Región',
   },
 ];
 
@@ -103,7 +119,7 @@ export const obtainFormDataConstructor = (entityConstructor: { [s: string]: any 
   let entityModeller: any[] = [];
 
   entityParameters.forEach((key, index) => {
-    if (!Array.isArray(entityValues[index])) {
+    if (!Array.isArray(entityValues[index]) && typeof Object.values(entityValues[index])[0] !== 'object') {
       let entityModellerItem = {
         name: `${key.substr(0, 1).toUpperCase()}${key.substr(1, key.length)}`,
         parameterName: key,
@@ -118,9 +134,13 @@ export const obtainFormDataConstructor = (entityConstructor: { [s: string]: any 
       entityModeller = [...entityModeller, entityModellerItem];
     } else {
       let composedValue: any[] = [];
-      let item: any[] = Object.keys(entityValues[index][0]);
-      let itemValues: any[] = Object.values(entityValues[index][0]);
-      item.forEach((element, elementIndex) => {
+      let item: any[] = Array.isArray(entityValues[index])
+        ? Object.keys(entityValues[index][0])
+        : Object.keys(entityValues[index]);
+      let itemValues: any[] = Array.isArray(entityValues[index])
+        ? Object.values(entityValues[index][0])
+        : Object.values(entityValues[index]);
+      item.forEach((element: any, elementIndex: any) => {
         let subItem = {
           name: `${element.substr(0, 1).toUpperCase()}${element.substr(1, element.length)}`,
           parameterName: element,

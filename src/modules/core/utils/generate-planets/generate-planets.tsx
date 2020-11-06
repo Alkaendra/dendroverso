@@ -3,6 +3,7 @@ import { getPlanetaryHidrosphereData } from './generate-planets-hidrosphere';
 import { getPlanetaryGeosphereData } from './generate-planets-geosphere';
 import { getPlanetaryAtmosphericalData } from './generate-planets-atmosphere';
 import { generateRandomFloat, generateRandomNumber } from '../utils';
+import { PLANETARY_MAYOR_TYPES } from '../../../admin/components/admin-commons/admin-models/unhabitable-planet.model';
 
 export const SYSTEM_ZONES = {
   INNER: 'inner',
@@ -116,55 +117,55 @@ export const obtainSystemOrbits = () => {
   return orbits;
 };
 
-export const getPlanetMayorType = (systemZone: string) => {
+export const getPlanetMayorType = (systemZone: string): { type: string; label: string } => {
   const generateRandom: number = generateRandomNumber(1, 100);
-  const planetaryMayorType = {
+  const planetaryMayorType: any = {
     ...(systemZone === SYSTEM_ZONES.INNER && {
       ...(generateRandom >= 1 &&
         generateRandom <= 3 && {
           type: 'CA',
-          label: 'Cinturón de Asteroides',
+          label: PLANETARY_MAYOR_TYPES.ASTEROID,
         }),
       ...(generateRandom >= 4 &&
-        generateRandom <= 50 && {
+        generateRandom <= 80 && {
           type: 'R',
-          label: 'Rocoso',
+          label: PLANETARY_MAYOR_TYPES.ROCKY,
         }),
-      ...(generateRandom >= 51 && {
+      ...(generateRandom >= 81 && {
         type: 'G',
-        label: 'Gigante Gasesoso',
+        label: PLANETARY_MAYOR_TYPES.GAS_GIANT,
       }),
     }),
     ...(systemZone === SYSTEM_ZONES.HZ && {
       ...(generateRandom >= 1 &&
         generateRandom <= 3 && {
           type: 'CA',
-          label: 'Cinturón de Asteroides',
+          label: PLANETARY_MAYOR_TYPES.ASTEROID,
         }),
       ...(generateRandom >= 4 &&
-        generateRandom <= 33 && {
+        generateRandom <= 43 && {
           type: 'R',
-          label: 'Rocoso',
+          label: PLANETARY_MAYOR_TYPES.ROCKY,
         }),
-      ...(generateRandom >= 34 && {
+      ...(generateRandom >= 44 && {
         type: 'G',
-        label: 'Gigante Gasesoso',
+        label: PLANETARY_MAYOR_TYPES.GAS_GIANT,
       }),
     }),
     ...(systemZone === SYSTEM_ZONES.OUTER && {
       ...(generateRandom >= 1 &&
         generateRandom <= 3 && {
           type: 'CA',
-          label: 'Cinturón de Asteroides',
+          label: PLANETARY_MAYOR_TYPES.ASTEROID,
         }),
       ...(generateRandom >= 4 &&
         generateRandom <= 20 && {
           type: 'R',
-          label: 'Rocoso',
+          label: PLANETARY_MAYOR_TYPES.ROCKY,
         }),
       ...(generateRandom >= 21 && {
         type: 'G',
-        label: 'Gigante Gasesoso',
+        label: PLANETARY_MAYOR_TYPES.GAS_GIANT,
       }),
     }),
   };
