@@ -4,6 +4,7 @@ import { getPlanetaryGeosphereData } from './generate-planets-geosphere';
 import { getPlanetaryAtmosphericalData } from './generate-planets-atmosphere';
 import { generateRandomFloat, generateRandomNumber } from '../utils';
 import { PLANETARY_MAYOR_TYPES } from '../../../admin/components/admin-commons/admin-models/unhabitable-planet.model';
+import { PlanetaryType } from '../../../admin/components/admin-commons/admin-models/inhabitated-planet.model';
 
 export const SYSTEM_ZONES = {
   INNER: 'inner',
@@ -12,42 +13,164 @@ export const SYSTEM_ZONES = {
 };
 
 export type habitablePlanetRoleType = {
+  connectivityMod: number;
+  culturalDevelopmentMod: number;
+  economicalDevelopmentMod: number;
+  industrialDevelopmentMod: number;
   label: string;
+  maxEnergeticResourcesMod: number;
+  maxFoodResourcesMod: number;
+  maxIndustrialResourcesMod: number;
+  militaryDevelopmentMod: number;
   pobMod: number;
+  technologicalDevelopmentMod: number;
 };
 
 export const HABITABLE_PLANET_ROLE = {
   NATION_CAPITAL: {
+    connectivityMod: 60,
+    culturalDevelopmentMod: generateRandomNumber(2, 3),
+    economicalDevelopmentMod: generateRandomNumber(3, 6),
+    industrialDevelopmentMod: generateRandomNumber(2, 3),
     label: 'Capital de Nación',
+    maxEnergeticResourcesMod: 0,
+    maxFoodResourcesMod: 0,
+    maxIndustrialResourcesMod: 0,
+    militaryDevelopmentMod: generateRandomNumber(3, 4),
     pobMod: 6,
+    technologicalDevelopmentMod: generateRandomNumber(2, 3),
   },
   REGION_CAPITAL: {
+    connectivityMod: 50,
+    culturalDevelopmentMod: generateRandomNumber(1, 2),
+    economicalDevelopmentMod: generateRandomNumber(2, 4),
+    industrialDevelopmentMod: generateRandomNumber(1, 2),
     label: 'Capital regional',
+    maxEnergeticResourcesMod: 0,
+    maxFoodResourcesMod: 0,
+    maxIndustrialResourcesMod: 0,
+    militaryDevelopmentMod: generateRandomNumber(1, 2),
     pobMod: 4,
+    technologicalDevelopmentMod: generateRandomNumber(1, 2),
   },
   MAYOR_RESOURCE_PRODUCTOR: {
+    connectivityMod: 50,
+    culturalDevelopmentMod: 0,
+    economicalDevelopmentMod: generateRandomNumber(1, 2),
+    industrialDevelopmentMod: 0,
     label: 'Productor de Recursos Principal',
+    maxEnergeticResourcesMod:
+      generateRandomNumber(1, 100) > 70 ? generateRandomNumber(3, 4) : generateRandomNumber(1, 2),
+    maxFoodResourcesMod: generateRandomNumber(1, 100) > 70 ? generateRandomNumber(3, 4) : generateRandomNumber(1, 2),
+    maxIndustrialResourcesMod:
+      generateRandomNumber(1, 100) > 70 ? generateRandomNumber(3, 4) : generateRandomNumber(1, 2),
+    militaryDevelopmentMod: generateRandomNumber(0, 1),
     pobMod: 2,
+    technologicalDevelopmentMod: 0,
   },
-  MAYOR_INDUSTRIAL_PRODUCTOR: {
+  MAYOR_INDUSTRIAL_CENTER: {
+    connectivityMod: 40,
+    culturalDevelopmentMod: 0,
+    economicalDevelopmentMod: generateRandomNumber(2, 3),
+    industrialDevelopmentMod: generateRandomNumber(3, 4),
     label: 'Productor Industrial Principal',
+    maxEnergeticResourcesMod: 0,
+    maxFoodResourcesMod: 0,
+    maxIndustrialResourcesMod: 0,
+    militaryDevelopmentMod: generateRandomNumber(0, 1),
     pobMod: 2,
+    technologicalDevelopmentMod: 0,
   },
   MINOR_RESOURCE_PRODUCTOR: {
-    label: 'Productor de Recursos Secundario',
+    connectivityMod: 40,
+    culturalDevelopmentMod: 0,
+    economicalDevelopmentMod: generateRandomNumber(1, 2),
+    industrialDevelopmentMod: 0,
+    label: 'Productor de Recursos Menor',
+    maxEnergeticResourcesMod: generateRandomNumber(1, 100) > 70 ? generateRandomNumber(2, 3) : 1,
+    maxFoodResourcesMod: generateRandomNumber(1, 100) > 70 ? generateRandomNumber(2, 3) : 1,
+    maxIndustrialResourcesMod: generateRandomNumber(1, 100) > 70 ? generateRandomNumber(2, 3) : 1,
+    militaryDevelopmentMod: 0,
     pobMod: 1,
+    technologicalDevelopmentMod: 0,
   },
-  MINOR_INDUSTRIAL_PRODUCTOR: {
-    label: 'Productor Industrial Secundario',
+  MINOR_INDUSTRIAL_CENTER: {
+    connectivityMod: 20,
+    culturalDevelopmentMod: 0,
+    economicalDevelopmentMod: generateRandomNumber(1, 2),
+    industrialDevelopmentMod: generateRandomNumber(1, 2),
+    label: 'Productor Industrial Menor',
+    maxEnergeticResourcesMod: 0,
+    maxFoodResourcesMod: 0,
+    maxIndustrialResourcesMod: 0,
+    militaryDevelopmentMod: 0,
     pobMod: 1,
+    technologicalDevelopmentMod: 0,
+  },
+  CULTURAL_CENTER: {
+    connectivityMod: 20,
+    culturalDevelopmentMod: generateRandomNumber(2, 3),
+    economicalDevelopmentMod: generateRandomNumber(1, 2),
+    industrialDevelopmentMod: 0,
+    label: 'Centro Cultural',
+    maxEnergeticResourcesMod: 0,
+    maxFoodResourcesMod: 0,
+    maxIndustrialResourcesMod: 0,
+    militaryDevelopmentMod: 0,
+    pobMod: 0,
+    technologicalDevelopmentMod: 0,
+  },
+  RESEARCH_CENTER: {
+    connectivityMod: 20,
+    culturalDevelopmentMod: 0,
+    economicalDevelopmentMod: generateRandomNumber(1, 2),
+    industrialDevelopmentMod: 0,
+    label: 'Centro de Investigación',
+    maxEnergeticResourcesMod: 0,
+    maxFoodResourcesMod: 0,
+    maxIndustrialResourcesMod: 0,
+    militaryDevelopmentMod: 0,
+    pobMod: 0,
+    technologicalDevelopmentMod: generateRandomNumber(2, 3),
+  },
+  MILITARY_BASE: {
+    connectivityMod: 30,
+    culturalDevelopmentMod: 0,
+    economicalDevelopmentMod: 0,
+    industrialDevelopmentMod: 0,
+    label: 'Base Militar',
+    maxEnergeticResourcesMod: 0,
+    maxFoodResourcesMod: 0,
+    maxIndustrialResourcesMod: 0,
+    militaryDevelopmentMod: generateRandomNumber(2, 3),
+    pobMod: 0,
+    technologicalDevelopmentMod: generateRandomNumber(1, 2),
   },
   COLONY: {
+    connectivityMod: 20,
+    culturalDevelopmentMod: 0,
+    economicalDevelopmentMod: 0,
+    industrialDevelopmentMod: 0,
     label: 'Colonia',
+    maxEnergeticResourcesMod: 0,
+    maxFoodResourcesMod: 0,
+    maxIndustrialResourcesMod: 0,
+    militaryDevelopmentMod: 0,
     pobMod: -1,
+    technologicalDevelopmentMod: 0,
   },
   OTHER: {
+    connectivityMod: 20,
+    culturalDevelopmentMod: 0,
+    economicalDevelopmentMod: 0,
+    industrialDevelopmentMod: 0,
     label: 'Otro',
+    maxEnergeticResourcesMod: 0,
+    maxFoodResourcesMod: 0,
+    maxIndustrialResourcesMod: 0,
+    militaryDevelopmentMod: 0,
     pobMod: -2,
+    technologicalDevelopmentMod: 0,
   },
 };
 
@@ -174,17 +297,7 @@ export const getPlanetMayorType = (systemZone: string): { type: string; label: s
 };
 
 export const getPlanetSubType = (surfaceTemperature: number, hidrologyPercentage: number, IH: number) => {
-  let terTypes: string[] = [];
-  let planetType = {
-    energeticResourcesMod: 0,
-    foodResourcesMod: 0,
-    industrialResourcesMod: 0,
-    populationMod: 0,
-    specialTraitMod: 0,
-    terrainTypes: terTypes,
-    subTypeCode: '',
-    subType: '',
-  };
+  let planetType: PlanetaryType = {} as any;
 
   if (surfaceTemperature < 0) {
     switch (true) {

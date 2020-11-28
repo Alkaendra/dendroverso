@@ -1,7 +1,7 @@
 import React, { useReducer, Fragment } from 'react';
 import AdminForm from '../../admin-commons/admin-forms/admin-form';
 import { obtainDataForTriggerFieldList, obtainFormDataConstructor } from '../../../admin';
-import { nationConstructor, Nation } from '../nation.model';
+import { nationConstructor, Nation } from '../../admin-commons/admin-models/nation.model';
 import { debounce } from 'lodash';
 import { db } from '../../../../core/Firestore';
 

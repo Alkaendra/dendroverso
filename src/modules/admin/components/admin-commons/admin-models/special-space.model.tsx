@@ -29,7 +29,7 @@ const SPECIAL_SPACE_FREQUENCY = {
 
 export const SPECIAL_SPACE_POSSIBLE_TYPES = {
   APOMONY: 'Apomony', // Apomonía
-  BLIGHT: 'Blight', // Llaga
+  sore: 'Sore', // Llaga
   SILENCE: 'Silence', // Silencio
   VOID: 'Void', // Vacío
 };
@@ -51,14 +51,14 @@ export const specialSpaceSizes = [
       label: SPECIAL_SPACE_SIZES.SMALL,
       maxSystems: 4,
     },
-    freq: 'minor',
+    freq: 'normal',
   },
   {
     dataToSend: {
       label: SPECIAL_SPACE_SIZES.MEDIUM,
       maxSystems: 8,
     },
-    freq: 'normal',
+    freq: 'minor',
   },
   {
     dataToSend: {
@@ -144,6 +144,25 @@ export const specialSpaceFrequency = [
       label: SPECIAL_SPACE_FREQUENCY.PLENTY,
       maxSpecialSpaces: 24,
     },
+    freq: 'veryRare',
+  },
+];
+
+export const specialSpaceType = [
+  {
+    dataToSend: SPECIAL_SPACE_POSSIBLE_TYPES.VOID,
+    freq: 'high',
+  },
+  {
+    dataToSend: SPECIAL_SPACE_POSSIBLE_TYPES.SILENCE,
+    freq: 'normal',
+  },
+  {
+    dataToSend: SPECIAL_SPACE_POSSIBLE_TYPES.sore,
+    freq: 'rare',
+  },
+  {
+    dataToSend: SPECIAL_SPACE_POSSIBLE_TYPES.APOMONY,
     freq: 'veryRare',
   },
 ];

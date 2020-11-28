@@ -3,7 +3,7 @@ import { useHistory, useRouteMatch } from 'react-router-dom';
 import { debounce } from 'lodash';
 import { db } from '../../../../core/Firestore';
 import AdminForm from '../../admin-commons/admin-forms/admin-form';
-import { Nation, nationConstructor } from '../nation.model';
+import { Nation, nationConstructor } from '../../admin-commons/admin-models/nation.model';
 import { obtainFormDataConstructor, obtainDataForTriggerFieldList } from '../../../admin';
 
 const initialState = {

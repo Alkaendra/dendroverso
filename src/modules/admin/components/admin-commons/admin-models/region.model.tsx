@@ -1,13 +1,41 @@
-import { Ethnicity } from '../../admin-commons/admin-models/ethnicity.model';
-import { Language, languageStatus } from '../../admin-commons/admin-models/language.model';
-import { Leader } from '../../admin-commons/admin-models/leader.model';
-import { Name } from '../../admin-commons/admin-models/name.model';
-import { Specialspace } from '../../admin-commons/admin-models/special-space.model';
+import { HABITABLE_PLANET_ROLE } from '../../../../core/utils/generate-planets/generate-planets';
+import { Ethnicity } from './ethnicity.model';
+import { Language, languageStatus } from './language.model';
+import { Leader } from './leader.model';
+import { Name } from './name.model';
+import { Sector } from './sector.model';
+import { Specialspace } from './special-space.model';
+
+export const PLANETARY_POSSIBLE_ROLES_BY_SECTOR_ROLE: any = {
+  Administrative: [
+    HABITABLE_PLANET_ROLE.REGION_CAPITAL,
+    HABITABLE_PLANET_ROLE.MAYOR_INDUSTRIAL_CENTER,
+    HABITABLE_PLANET_ROLE.MAYOR_RESOURCE_PRODUCTOR,
+  ],
+  Commercial: [HABITABLE_PLANET_ROLE.MAYOR_INDUSTRIAL_CENTER, HABITABLE_PLANET_ROLE.MINOR_INDUSTRIAL_CENTER],
+  Cultural: [HABITABLE_PLANET_ROLE.CULTURAL_CENTER, HABITABLE_PLANET_ROLE.OTHER],
+  Industrial: [
+    HABITABLE_PLANET_ROLE.MAYOR_INDUSTRIAL_CENTER,
+    HABITABLE_PLANET_ROLE.MINOR_INDUSTRIAL_CENTER,
+    HABITABLE_PLANET_ROLE.MINOR_RESOURCE_PRODUCTOR,
+  ],
+  Investigation: [HABITABLE_PLANET_ROLE.RESEARCH_CENTER, HABITABLE_PLANET_ROLE.COLONY],
+  Militar: [
+    HABITABLE_PLANET_ROLE.MILITARY_BASE,
+    HABITABLE_PLANET_ROLE.MINOR_INDUSTRIAL_CENTER,
+    HABITABLE_PLANET_ROLE.MINOR_RESOURCE_PRODUCTOR,
+  ],
+  'Resource Producer': [
+    HABITABLE_PLANET_ROLE.MAYOR_RESOURCE_PRODUCTOR,
+    HABITABLE_PLANET_ROLE.MINOR_INDUSTRIAL_CENTER,
+    HABITABLE_PLANET_ROLE.COLONY,
+  ],
+};
 
 export type Region = {
   id?: string;
   apomonies?: Specialspace[];
-  blights?: Specialspace[];
+  sores?: Specialspace[];
   code?: string;
   description?: string[];
   ethnicities?: Ethnicity[];
@@ -17,6 +45,7 @@ export type Region = {
   leaders?: Leader[];
   nation?: string;
   power?: number;
+  sectors?: Sector[];
   silences?: Specialspace[];
   society?: string[];
   voids?: Specialspace[];
@@ -31,7 +60,7 @@ export const regionConstructor = {
       type: { type: 'text', size: 'small' },
     },
   ],
-  blights: [
+  sores: [
     {
       name: { type: 'text', size: 'medium' },
       region: { type: 'text', size: 'medium' },

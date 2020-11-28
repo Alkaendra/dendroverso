@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../../../core/Firestore';
-import { Nation } from '../nation.model';
+import { Nation } from '../../admin-commons/admin-models/nation.model';
 import AdminList, { ListProps } from '../../admin-commons/admin-list/admin-list';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './admin-naciones-list.scss';

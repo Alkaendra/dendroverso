@@ -1,7 +1,7 @@
-import { Ethnicity } from '../admin-commons/admin-models/ethnicity.model';
-import { Language, languageStatus } from '../admin-commons/admin-models/language.model';
-import { Leader } from '../admin-commons/admin-models/leader.model';
-import { Name } from '../admin-commons/admin-models/name.model';
+import { Ethnicity } from './ethnicity.model';
+import { Language, languageStatus } from './language.model';
+import { Leader } from './leader.model';
+import { Name } from './name.model';
 
 export type Nation = {
   id?: string;

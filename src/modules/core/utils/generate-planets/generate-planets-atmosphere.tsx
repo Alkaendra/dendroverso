@@ -7,13 +7,13 @@ interface atmosphereData {
   type: string;
 }
 
-interface planetaryAtmosphereData extends atmosphereData {
+export interface PlanetaryAtmosphereData extends atmosphereData {
   albedo: number;
 }
 
 // Se obtienen datos generales de la atmósfera a partir del tamaño del planeta
 const getTipoPerfilAtmosfera = (type: string) => {
-  let atmosfera: planetaryAtmosphereData | {} = {
+  let atmosfera: PlanetaryAtmosphereData | {} = {
     albedo: 0,
     greenhouseEffect: 0,
     surfacePressure: 0,
@@ -86,14 +86,8 @@ const getTipoPerfilAtmosfera = (type: string) => {
   return atmosfera;
 };
 
-export const getPlanetaryAtmosphericalData = (type: string) => {
-  let atmosfera: planetaryAtmosphereData = {
-    albedo: 0,
-    greenhouseEffect: 0,
-    IHmod: 0,
-    surfacePressure: 0,
-    type: '',
-  };
+export const getPlanetaryAtmosphericalData = (type: string): PlanetaryAtmosphereData => {
+  let atmosfera: PlanetaryAtmosphereData = {} as any;
   const gtpa: any = getTipoPerfilAtmosfera(type);
 
   atmosfera = {

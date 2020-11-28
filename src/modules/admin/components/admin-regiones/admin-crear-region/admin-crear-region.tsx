@@ -1,11 +1,11 @@
 import React, { useReducer, Fragment, useEffect } from 'react';
 import AdminForm from '../../admin-commons/admin-forms/admin-form';
 import { obtainDataForTriggerFieldList, obtainFormDataConstructor } from '../../../admin';
-import { regionConstructor, Region } from './admin.region.model';
+import { regionConstructor, Region } from '../../admin-commons/admin-models/region.model';
 import { debounce } from 'lodash';
 import { db } from '../../../../core/Firestore';
 import { useRouteMatch } from 'react-router-dom';
-import { Nation } from '../../admin-naciones/nation.model';
+import { Nation } from '../../admin-commons/admin-models/nation.model';
 
 const initialState = {
   nation: null,

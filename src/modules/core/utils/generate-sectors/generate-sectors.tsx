@@ -130,7 +130,7 @@ export const generateUnconnectedSpace = (number: number, name: string, sector: b
         {
           name: `${name}-${i}`,
           systems: [],
-          blights: {
+          sores: {
             inner_frontier: [],
             inner: [],
           },
@@ -166,7 +166,7 @@ export const generateConnectedSystemsDistribution = (connectedSystems: any) => {
 export const generateUnconnectedRegionDistribution = (sectors: any, unconnectedSpaces: any) => {
   const totalSystemsRegionDistribution: any = {
     sectors: [],
-    blights: [],
+    sores: [],
     silences: [],
     singulae: [],
     voids: [],
@@ -214,11 +214,11 @@ export const generateUnconnectedRegionDistribution = (sectors: any, unconnectedS
     const rand = generateRandomNumber(1, 100);
     const sector = generateRandomNumber(0, sectors.length - 1);
     if (rand < 10) {
-      totalSystemsRegionDistribution['blights'].push(u);
+      totalSystemsRegionDistribution['sores'].push(u);
     } else if (rand >= 10 && rand <= 50) {
-      totalSystemsRegionDistribution['sectors'][sector]['blights']['inner_frontier'].push(u);
+      totalSystemsRegionDistribution['sectors'][sector]['sores']['inner_frontier'].push(u);
     } else {
-      totalSystemsRegionDistribution['sectors'][sector]['blights']['inner'].push(u);
+      totalSystemsRegionDistribution['sectors'][sector]['sores']['inner'].push(u);
     }
   });
 

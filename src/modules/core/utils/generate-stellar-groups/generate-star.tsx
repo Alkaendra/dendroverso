@@ -1,7 +1,7 @@
 import { generateRandomFloat, generateRandomNumber, obtainDataFromTable } from '../utils';
 import { getLuminosityStarMassRadiusTemperature } from './generate-star-massluminosity';
 
-interface Star {
+export interface Star {
   decimalClass: number;
   color?: string; // Color de la estrella en función de su tipo
   luminosity_aleatorio: number; // Número aleatorio que se utiliza para obtener la luminosity. Útil para obtener la luminosity de las compañeras binarias

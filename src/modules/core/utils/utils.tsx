@@ -382,8 +382,8 @@ export const habitablePlanetPopulationTable: any = {
   },
 };
 
-export const generateSystemConnectivity: any | null = (randomNumber: number, habitable: boolean = false) => {
-  const finalRandomNumber = habitable ? randomNumber - 30 : randomNumber;
+export const generateSystemConnectivity: any | null = (randomNumber: number, roleMod: number) => {
+  const finalRandomNumber = randomNumber - roleMod;
   switch (true) {
     case finalRandomNumber < 2:
       return {

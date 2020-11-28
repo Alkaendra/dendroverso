@@ -1,5 +1,36 @@
 import { generateRandomFloat, generateRandomNumber } from '../utils';
 
+interface Density {
+  label: string;
+  value: number;
+}
+
+interface Gravity {
+  g: number;
+  gravityIhMod: number;
+}
+
+interface Radio {
+  radioComparedToEarth: number;
+  radioInKMS: number;
+}
+
+interface Size {
+  cod: string;
+  label: string;
+}
+
+export interface AstrophysicalData {
+  axisTilt: number;
+  density: Density;
+  escapeVelocity: number;
+  gravity: Gravity;
+  magnetoSphere: number;
+  mass: number;
+  radio: Radio;
+  size: Size;
+}
+
 const habitablePlanetSize: any = (result: number) => ({
   ...(result > 0 &&
     result <= 10 && {
@@ -183,7 +214,7 @@ export function getInclinacionEje() {
   return iE;
 }
 
-export const getPlanetaryAstrophysicalData = (planetSizeLimitation?: number) => {
+export const getPlanetaryAstrophysicalData = (planetSizeLimitation?: number): AstrophysicalData => {
   const planetSize = habitablePlanetSize(planetSizeLimitation || generateRandomNumber(1, 100));
   const planetRadio = getRadio(planetSize.size);
   const planetDensity = getDensidad();

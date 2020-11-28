@@ -1,6 +1,6 @@
 import { generateRandomNumber, generateRandomFloat } from '../utils';
 
-interface hidrosphereData {
+export interface HidrosphereData {
   hidrosphereIHMod: number;
   percentage: number;
   value: number;
@@ -8,7 +8,7 @@ interface hidrosphereData {
 
 // Obtenermos la hidrosfera a partir del tamaño del planeta
 const getHidrosfera = (type: string) => {
-  let hidrosfera: hidrosphereData | {} = {
+  let hidrosfera: HidrosphereData | {} = {
     hidrosphereIHMod: 0,
     percentage: 0.0,
     value: 0,
@@ -100,10 +100,10 @@ const getHidrosfera = (type: string) => {
     }),
   };
 
-  return hidrosfera as hidrosphereData;
+  return hidrosfera as HidrosphereData;
 };
 
-export const getPlanetaryHidrosphereData = (type: string) => {
+export const getPlanetaryHidrosphereData = (type: string): HidrosphereData => {
   const hidrosfera = getHidrosfera(type);
 
   return {

@@ -1,3 +1,4 @@
+import { InhabitatedPlanet } from './inhabitated-planet.model';
 import { Special } from './special.model';
 import { Planet } from './unhabitable-planet.model';
 
@@ -25,7 +26,7 @@ export interface System {
   description?: string[];
   id?: string;
   name: string;
-  planets: Planet[];
+  planets: (Planet | InhabitatedPlanet)[];
   sector: string;
   specials: Special[];
   stellarGroup?: any;
