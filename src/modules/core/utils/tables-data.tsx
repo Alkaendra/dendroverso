@@ -1,7 +1,13 @@
+export interface DynamicDataTableObject {
+  dataToSend: {} | any;
+  freq: string;
+}
+
 export const dataValuesToGenerateTableRanges: any = {
   veryRare: 1,
   rare: 2,
   minor: 5,
+  veryLow: 10,
   low: 15,
   normal: 20,
   relevant: 30,
@@ -13,35 +19,11 @@ export const dataValuesToGenerateTableRanges: any = {
 export const cosa = [
   {
     dataToSend: 'agua',
-    freq: 'veryRare',
+    freq: 'high',
   },
   {
     dataToSend: 'fanta',
-    freq: 'veryRare',
-  },
-  {
-    dataToSend: 'trina',
-    freq: 'rare',
-  },
-  {
-    dataToSend: 'pepsi',
-    freq: 'minor',
-  },
-  {
-    dataToSend: 'cherry',
-    freq: 'minor',
-  },
-  {
-    dataToSend: 'nukacola',
     freq: 'normal',
-  },
-  {
-    dataToSend: 'poison',
-    freq: 'relevant',
-  },
-  {
-    dataToSend: 'nestea',
-    freq: 'relevant',
   },
 ];
 

@@ -39,6 +39,91 @@ export const SPACE_STATION_QUALITY = {
   ELITE: 'Elite',
 };
 
+export const spaceStationQualityByNationPower = (power: number) => {
+  switch (true) {
+    case power > 0 && power <= 3:
+      return [
+        {
+          dataToSend: SPACE_STATION_QUALITY.PRIMITVE,
+          freq: 'low',
+        },
+        {
+          dataToSend: SPACE_STATION_QUALITY.NORMAL,
+          freq: 'normal',
+        },
+        {
+          dataToSend: SPACE_STATION_QUALITY.ANCIENT,
+          freq: 'low',
+        },
+      ];
+    case power > 3 && power <= 6:
+      return [
+        {
+          dataToSend: SPACE_STATION_QUALITY.PRIMITVE,
+          freq: 'rare',
+        },
+        {
+          dataToSend: SPACE_STATION_QUALITY.NORMAL,
+          freq: 'normal',
+        },
+        {
+          dataToSend: SPACE_STATION_QUALITY.ANCIENT,
+          freq: 'rare',
+        },
+        {
+          dataToSend: SPACE_STATION_QUALITY.DEFICIENT,
+          freq: 'low',
+        },
+        {
+          dataToSend: SPACE_STATION_QUALITY.SUPERB,
+          freq: 'veryRare',
+        },
+      ];
+    case power > 6 && power <= 9:
+      return [
+        {
+          dataToSend: SPACE_STATION_QUALITY.NORMAL,
+          freq: 'normal',
+        },
+        {
+          dataToSend: SPACE_STATION_QUALITY.ANCIENT,
+          freq: 'veryRare',
+        },
+        {
+          dataToSend: SPACE_STATION_QUALITY.DEFICIENT,
+          freq: 'rare',
+        },
+        {
+          dataToSend: SPACE_STATION_QUALITY.SUPERB,
+          freq: 'low',
+        },
+        {
+          dataToSend: SPACE_STATION_QUALITY.ELITE,
+          freq: 'veryRare',
+        },
+      ];
+    default:
+      return [
+        {
+          dataToSend: SPACE_STATION_QUALITY.NORMAL,
+          freq: 'normal',
+        },
+        {
+          dataToSend: SPACE_STATION_QUALITY.DEFICIENT,
+          freq: 'veryRare',
+        },
+        {
+          dataToSend: SPACE_STATION_QUALITY.SUPERB,
+          freq: 'low',
+        },
+        {
+          dataToSend: SPACE_STATION_QUALITY.ELITE,
+          freq: 'minor',
+        },
+      ];
+  }
+};
+
 export const SPACE_STATION_SIZE = {
   SMALL: 'Small',
   MEDIUM: 'Medium',
@@ -142,7 +227,7 @@ export const SPACE_STATION_TYPE = {
   SHIPYARD: 'Shipyard',
 };
 
-export const spaceStationTypesByPlanetRole = (role: habitablePlanetRoleType) => {
+export const spaceStationTypesByPlanetRole = (role: habitablePlanetRoleType): any => {
   switch (role) {
     case HABITABLE_PLANET_ROLE.NATION_CAPITAL:
       return {
@@ -326,6 +411,16 @@ export const spaceStationTypesByPlanetRole = (role: habitablePlanetRoleType) => 
   }
 };
 
+export const SPACE_STATION_OWNERSHIP = {
+  NATIONAL: 'National',
+  PRIVATE: ' Private',
+};
+
+export interface SpaceStationType {
+  mainType: string;
+  subTypes: string[];
+}
+
 export interface SpaceStation {
   defensiveCapacity: CombatCapacity;
   location?: string;
@@ -335,5 +430,5 @@ export interface SpaceStation {
   quality?: string;
   size: string;
   system?: string;
-  type: string[];
+  type: SpaceStationType;
 }

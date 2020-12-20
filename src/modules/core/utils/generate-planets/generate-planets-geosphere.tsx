@@ -21,8 +21,8 @@ const getFactorEstresSismico = (densityType: string, stellarMass: number, orbit:
 export function getGeosphereResources(seismicStressFactor: number, densityType: string) {
   let geoResources: resourcesAndPopulationMods | {} = {
     energyResourcesMod: 0,
-    foodResourcesMod: 0,
-    industrialResourcesMod: 0,
+    food_resources_mod: 0,
+    industrial_resources_mod: 0,
     populationMod: 0,
     specials: [],
   };
@@ -58,34 +58,34 @@ export function getGeosphereResources(seismicStressFactor: number, densityType: 
   geoResources = {
     ...(valor <= 1 && {
       ...geoResources,
-      industrialResourcesMod: -2,
+      industrial_resources_mod: -2,
       specials: ['Pobreza Mineral'],
     }),
     ...(valor >= 2 &&
       valor <= 5 && {
         ...geoResources,
-        industrialResourcesMod: -1,
+        industrial_resources_mod: -1,
       }),
     ...(valor >= 6 &&
       valor <= 8 && {
         ...geoResources,
-        industrialResourcesMod: 1,
+        industrial_resources_mod: 1,
       }),
     ...(valor >= 9 &&
       valor <= 10 && {
         ...geoResources,
-        industrialResourcesMod: 2,
+        industrial_resources_mod: 2,
         specials: ['Tectónica Estable'],
       }),
     ...(valor >= 11 &&
       valor <= 12 && {
-        industrialResourcesMod: 3,
+        industrial_resources_mod: 3,
         populationMod: -2,
         specials: ['Alta Vulcanicidad', 'Téctónica Inestable'],
       }),
     ...(valor >= 13 && {
       ...geoResources,
-      industrialResourcesMod: 4,
+      industrial_resources_mod: 4,
       populationMod: -4,
       specials: ['Vulcanicidad Extrema', 'Tectónica Altamente Inestable'],
     }),

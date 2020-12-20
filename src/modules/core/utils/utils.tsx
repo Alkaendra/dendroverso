@@ -9,6 +9,7 @@ import { generatePlanetaryOtherTrait } from './habitable-planet-specials/other-s
 import { generatePlanetaryMoons } from './habitable-planet-specials/moon-specials';
 import { generatePlanetarySocialTrait } from './habitable-planet-specials/social.specials';
 import { Option } from '../../admin/components/admin-commons/admin-models/generic.model';
+import { INHABITATED_PLANETARY_CLIMATE_TYPES } from '../../admin/components/admin-commons/admin-models/inhabitated-planet.model';
 
 export const generateRandomNumber = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min);
 
@@ -26,6 +27,12 @@ export const generateSelectOptions = (opciones: string[]) => {
 
   return selectOptions;
 };
+
+export const parseNumbersToTwoDecimalDigits = (number: number): number => parseFloat(number.toFixed(2));
+export const parseNumbersToThreeDecimalDigits = (number: number): number => parseFloat(number.toFixed(3));
+
+export const reduceToAddParam = (dataArray: any[], paramToAdd: any) =>
+  dataArray.map(element => element[paramToAdd]).reduce((a, b) => a + b, 0);
 
 export const convertToRoman = (num: number) => {
   let romanNumbers: any = {
@@ -54,6 +61,9 @@ export const convertToRoman = (num: number) => {
   return str;
 };
 
+export const flattenArrayOfArrays = (arr: any) =>
+  arr.reduce((flat: any, next: any) => flat.concat(Array.isArray(next) ? flattenArrayOfArrays(next) : next), []);
+
 export const obtainHexCode = (numberValue: number): string => {
   if (numberValue < 10) {
     numberValue = 10;
@@ -80,7 +90,7 @@ export const obtainHexCode = (numberValue: number): string => {
 };
 
 export const obtainDataFromTable: any = (data: any) => {
-  const randomFactor = generateRandomNumber(0, data[data.length - 1].max);
+  const randomFactor = generateRandomNumber(1, data[data.length - 1].max);
   let valueToReturn = {};
   data.forEach((item: any) => {
     if (randomFactor >= item.min && randomFactor <= item.max) {
@@ -96,30 +106,30 @@ export const habitablePlanetType: any = (result: number) => ({
   ...(result > 0 &&
     result <= 10 && {
       energeticResourcesMod: 0,
-      foodResourcesMod: -2,
-      industrialResourcesMod: 2,
+      food_resources_mod: -2,
+      industrial_resources_mod: 2,
       populationMod: -2,
       specialTraitMod: 0,
       terrainTypes: ['Colinas', 'Montañas', 'Cavernas', 'Mar', 'Océano'],
-      typeCode: 'ALP',
-      type: 'Alpino',
+      typeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.ALPINE.code,
+      type: INHABITATED_PLANETARY_CLIMATE_TYPES.ALPINE.type,
     }),
   ...(result > 10 &&
     result <= 20 && {
       energeticResourcesMod: 1,
-      foodResourcesMod: -2,
-      industrialResourcesMod: 1,
+      food_resources_mod: -2,
+      industrial_resources_mod: 1,
       populationMod: -2,
       specialTraitMod: 0,
       terrainTypes: ['Colinas', 'Mar', 'Océano', 'Taiga', 'Tundra'],
-      typeCode: 'BOR',
-      type: 'Boreal',
+      typeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.BOREAL.code,
+      type: INHABITATED_PLANETARY_CLIMATE_TYPES.BOREAL.type,
     }),
   ...(result > 20 &&
     result <= 30 && {
       energeticResourcesMod: 1,
-      foodResourcesMod: 1,
-      industrialResourcesMod: 1,
+      food_resources_mod: 1,
+      industrial_resources_mod: 1,
       populationMod: -1,
       specialTraitMod: 1,
       terrainTypes: ['Cavernas', 'Colinas', 'Mar', 'Manglar', 'Océano', 'Selva', 'Túneles'],
@@ -129,8 +139,8 @@ export const habitablePlanetType: any = (result: number) => ({
   ...(result > 30 &&
     result <= 35 && {
       energeticResourcesMod: 0,
-      foodResourcesMod: 3,
-      industrialResourcesMod: 1,
+      food_resources_mod: 3,
+      industrial_resources_mod: 1,
       populationMod: 2,
       specialTraitMod: 2,
       terrainTypes: ['Bosque', 'Cavernas', 'Colinas', 'Llanura', 'Mar', 'Manglar', 'Montañas', 'Océano', 'Selva'],
@@ -140,8 +150,8 @@ export const habitablePlanetType: any = (result: number) => ({
   ...(result > 35 &&
     result <= 50 && {
       energeticResourcesMod: 0,
-      foodResourcesMod: 2,
-      industrialResourcesMod: 1,
+      food_resources_mod: 2,
+      industrial_resources_mod: 1,
       populationMod: 1,
       specialTraitMod: 1,
       terrainTypes: ['Bosque', 'Cavernas', 'Colinas', 'Llanura', 'Mar', 'Manglar', 'Montañas', 'Océano', 'Selva'],
@@ -151,8 +161,8 @@ export const habitablePlanetType: any = (result: number) => ({
   ...(result > 50 &&
     result <= 60 && {
       energeticResourcesMod: 1,
-      foodResourcesMod: -2,
-      industrialResourcesMod: 2,
+      food_resources_mod: -2,
+      industrial_resources_mod: 2,
       populationMod: -2,
       specialTraitMod: 0,
       terrainTypes: ['Cavernas', 'Colinas', 'Páramo', 'Lago', 'Montañas', 'Túneles'],
@@ -162,8 +172,8 @@ export const habitablePlanetType: any = (result: number) => ({
   ...(result > 60 &&
     result <= 70 && {
       energeticResourcesMod: 2,
-      foodResourcesMod: -2,
-      industrialResourcesMod: 2,
+      food_resources_mod: -2,
+      industrial_resources_mod: 2,
       populationMod: -2,
       specialTraitMod: 0,
       terrainTypes: ['Cavernas', 'Colinas', 'Desierto', 'Dunas', 'Montañas', 'Túneles'],
@@ -173,8 +183,8 @@ export const habitablePlanetType: any = (result: number) => ({
   ...(result > 70 &&
     result <= 95 && {
       energeticResourcesMod: 1,
-      foodResourcesMod: 3,
-      industrialResourcesMod: -1,
+      food_resources_mod: 3,
+      industrial_resources_mod: -1,
       populationMod: -1,
       specialTraitMod: 2,
       terrainTypes: ['Archipiélago', 'Isla', 'Mar', 'Océano'],
@@ -184,8 +194,8 @@ export const habitablePlanetType: any = (result: number) => ({
   ...(result > 96 &&
     result <= 105 && {
       energeticResourcesMod: 1,
-      foodResourcesMod: -2,
-      industrialResourcesMod: 1,
+      food_resources_mod: -2,
+      industrial_resources_mod: 1,
       populationMod: -2,
       specialTraitMod: 0,
       terrainTypes: ['Cavernas', 'Páramo helado', 'Glaciar', 'Mar', 'Océano'],
@@ -194,8 +204,8 @@ export const habitablePlanetType: any = (result: number) => ({
     }),
   ...(result > 105 && {
     energeticResourcesMod: 1,
-    foodResourcesMod: -2,
-    industrialResourcesMod: 1,
+    food_resources_mod: -2,
+    industrial_resources_mod: 1,
     populationMod: -3,
     specialTraitMod: 0,
     terrainTypes: ['Bosque', 'Cavernas', 'Manglar', 'Océano', 'Selva'],
@@ -207,41 +217,41 @@ export const habitablePlanetType: any = (result: number) => ({
 export const habitablePlanetSize: any = (result: number) => ({
   ...(result > 0 &&
     result <= 10 && {
-      culturalDevelopmentMod: -2,
-      economicalDevelopmentMod: -2,
-      industrialDevelopmentMod: -1,
-      militaryDevelopmentMod: 0,
-      technologicalDevelopmentMod: -2,
+      cultural_development_mod: -2,
+      economical_development_mod: -2,
+      industrial_development_mod: -1,
+      military_development_mod: 0,
+      technological_development_mod: -2,
       label: 'Mini Tierra',
       size: 'mT',
     }),
   ...(result > 10 &&
     result <= 30 && {
-      culturalDevelopmentMod: -1,
-      economicalDevelopmentMod: -1,
-      industrialDevelopmentMod: -1,
-      militaryDevelopmentMod: 0,
-      technologicalDevelopmentMod: -1,
+      cultural_development_mod: -1,
+      economical_development_mod: -1,
+      industrial_development_mod: -1,
+      military_development_mod: 0,
+      technological_development_mod: -1,
       label: 'Sub Tierra',
       size: 'sT',
     }),
   ...(result > 30 &&
     result <= 60 && {
-      culturalDevelopmentMod: 0,
-      economicalDevelopmentMod: 0,
-      industrialDevelopmentMod: 0,
-      militaryDevelopmentMod: 0,
-      technologicalDevelopmentMod: 0,
+      cultural_development_mod: 0,
+      economical_development_mod: 0,
+      industrial_development_mod: 0,
+      military_development_mod: 0,
+      technological_development_mod: 0,
       label: 'Tierra',
       size: 'T',
     }),
   ...(result > 60 &&
     result <= 98 && {
-      culturalDevelopmentMod: 2,
-      economicalDevelopmentMod: 2,
-      industrialDevelopmentMod: 2,
-      militaryDevelopmentMod: 0,
-      technologicalDevelopmentMod: 2,
+      cultural_development_mod: 2,
+      economical_development_mod: 2,
+      industrial_development_mod: 2,
+      military_development_mod: 0,
+      technological_development_mod: 2,
       label: 'Super Tierra',
       size: 'ST',
     }),
@@ -291,92 +301,92 @@ export const obtainRangedValue = (
 
 export const habitablePlanetPopulationTable: any = {
   0: {
-    culturalDevelopmentMod: -4,
-    economicalDevelopmentMod: -4,
-    industrialDevelopmentMod: -4,
-    militaryDevelopmentMod: 0,
-    technologicalDevelopmentMod: -4,
+    cultural_development_mod: -4,
+    economical_development_mod: -4,
+    industrial_development_mod: -4,
+    military_development_mod: 0,
+    technological_development_mod: -4,
     label: 'Decenas',
     value: 0,
   },
   1: {
-    culturalDevelopmentMod: -4,
-    economicalDevelopmentMod: -4,
-    industrialDevelopmentMod: -4,
-    militaryDevelopmentMod: 0,
-    technologicalDevelopmentMod: -4,
+    cultural_development_mod: -4,
+    economical_development_mod: -4,
+    industrial_development_mod: -4,
+    military_development_mod: 0,
+    technological_development_mod: -4,
     label: 'Centenas',
     value: 1,
   },
   2: {
-    culturalDevelopmentMod: -3,
-    economicalDevelopmentMod: -3,
-    industrialDevelopmentMod: -3,
-    militaryDevelopmentMod: 0,
-    technologicalDevelopmentMod: -3,
+    cultural_development_mod: -3,
+    economical_development_mod: -3,
+    industrial_development_mod: -3,
+    military_development_mod: 0,
+    technological_development_mod: -3,
     label: 'Millares',
     value: 2,
   },
   3: {
-    culturalDevelopmentMod: -2,
-    economicalDevelopmentMod: -2,
-    industrialDevelopmentMod: -2,
-    militaryDevelopmentMod: 0,
-    technologicalDevelopmentMod: -2,
+    cultural_development_mod: -2,
+    economical_development_mod: -2,
+    industrial_development_mod: -2,
+    military_development_mod: 0,
+    technological_development_mod: -2,
     label: 'Decenas de miles',
     value: 3,
   },
   4: {
-    culturalDevelopmentMod: -1,
-    economicalDevelopmentMod: -1,
-    industrialDevelopmentMod: -1,
-    militaryDevelopmentMod: 0,
-    technologicalDevelopmentMod: -1,
+    cultural_development_mod: -1,
+    economical_development_mod: -1,
+    industrial_development_mod: -1,
+    military_development_mod: 0,
+    technological_development_mod: -1,
     label: 'Centenas de miles',
     value: 4,
   },
   5: {
-    culturalDevelopmentMod: 0,
-    economicalDevelopmentMod: 0,
-    industrialDevelopmentMod: 0,
-    militaryDevelopmentMod: 0,
-    technologicalDevelopmentMod: 0,
+    cultural_development_mod: 0,
+    economical_development_mod: 0,
+    industrial_development_mod: 0,
+    military_development_mod: 0,
+    technological_development_mod: 0,
     label: 'Millones',
     value: 5,
   },
   6: {
-    culturalDevelopmentMod: 1,
-    economicalDevelopmentMod: 1,
-    industrialDevelopmentMod: 1,
-    militaryDevelopmentMod: 0,
-    technologicalDevelopmentMod: 1,
+    cultural_development_mod: 1,
+    economical_development_mod: 1,
+    industrial_development_mod: 1,
+    military_development_mod: 0,
+    technological_development_mod: 1,
     label: 'Decenas de millones',
     value: 6,
   },
   7: {
-    culturalDevelopmentMod: 2,
-    economicalDevelopmentMod: 2,
-    industrialDevelopmentMod: 2,
-    militaryDevelopmentMod: 0,
-    technologicalDevelopmentMod: 2,
+    cultural_development_mod: 2,
+    economical_development_mod: 2,
+    industrial_development_mod: 2,
+    military_development_mod: 0,
+    technological_development_mod: 2,
     label: 'Cientos de Millones',
     value: 7,
   },
   8: {
-    culturalDevelopmentMod: 3,
-    economicalDevelopmentMod: 3,
-    industrialDevelopmentMod: 3,
-    militaryDevelopmentMod: 0,
-    technologicalDevelopmentMod: 3,
+    cultural_development_mod: 3,
+    economical_development_mod: 3,
+    industrial_development_mod: 3,
+    military_development_mod: 0,
+    technological_development_mod: 3,
     label: 'Miles de Millones',
     value: 8,
   },
   9: {
-    culturalDevelopmentMod: 4,
-    economicalDevelopmentMod: 4,
-    industrialDevelopmentMod: 4,
-    militaryDevelopmentMod: 0,
-    technologicalDevelopmentMod: 4,
+    cultural_development_mod: 4,
+    economical_development_mod: 4,
+    industrial_development_mod: 4,
+    military_development_mod: 0,
+    technological_development_mod: 4,
     label: 'Decenas de miles de Millones',
     value: 9,
   },
@@ -422,15 +432,15 @@ export const obtainSpecialTrait = (randomNumber: any, specialFunc: any, previous
   let special = specialFunc;
   if (randomNumber > 85) {
     previousMods.energeticResourcesMod += special.energeticResourcesMod;
-    previousMods.foodResourcesMod += special.foodResourcesMod;
-    previousMods.industrialResourcesMod += special.industrialResourcesMod;
+    previousMods.food_resources_mod += special.food_resources_mod;
+    previousMods.industrial_resources_mod += special.industrial_resources_mod;
     previousMods.populationMod += special.populationMod;
     previousMods.specials = [...previousMods.specials, special.label];
   }
   if (!randomNumber) {
     previousMods.energeticResourcesMod += special.energeticResourcesMod;
-    previousMods.foodResourcesMod += special.foodResourcesMod;
-    previousMods.industrialResourcesMod += special.industrialResourcesMod;
+    previousMods.food_resources_mod += special.food_resources_mod;
+    previousMods.industrial_resources_mod += special.industrial_resources_mod;
     previousMods.populationMod += special.populationMod;
     if (special.mayorMoons || special.minorMoons) {
       previousMods.specials = [
@@ -452,8 +462,8 @@ export const obtainSpecialTrait = (randomNumber: any, specialFunc: any, previous
 export const obtainAllModsFromSpecials = () => {
   let allMods: any = {
     energeticResourcesMod: 0,
-    foodResourcesMod: 0,
-    industrialResourcesMod: 0,
+    food_resources_mod: 0,
+    industrial_resources_mod: 0,
     populationMod: 0,
     specials: [],
   };

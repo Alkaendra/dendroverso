@@ -11,8 +11,8 @@ export const generatePlanetaryMoons = () => {
         mayorMoons: 0,
         minorMoons: 0,
         energeticResourcesMod: 0,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 0,
+        food_resources_mod: 0,
+        industrial_resources_mod: 0,
         populationMod: 0,
       };
       break;
@@ -22,8 +22,8 @@ export const generatePlanetaryMoons = () => {
         mayorMoons: 1,
         minorMoons: 0,
         energeticResourcesMod: 0,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 2,
+        food_resources_mod: 0,
+        industrial_resources_mod: 2,
         populationMod: 1,
       };
       break;
@@ -33,8 +33,8 @@ export const generatePlanetaryMoons = () => {
         mayorMoons: 0,
         minorMoons: generateRandomNumber(1, 3),
         energeticResourcesMod: 0,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 1,
+        food_resources_mod: 0,
+        industrial_resources_mod: 1,
         populationMod: 0,
       };
       break;
@@ -44,8 +44,8 @@ export const generatePlanetaryMoons = () => {
         mayorMoons: 1,
         minorMoons: generateRandomNumber(1, 3),
         energeticResourcesMod: 0,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 3,
+        food_resources_mod: 0,
+        industrial_resources_mod: 3,
         populationMod: 1,
       };
       break;
@@ -55,8 +55,8 @@ export const generatePlanetaryMoons = () => {
         mayorMoons: 2,
         minorMoons: generateRandomNumber(0, 3),
         energeticResourcesMod: 0,
-        foodResourcesMod: 0,
-        industrialResourcesMod: 3,
+        food_resources_mod: 0,
+        industrial_resources_mod: 3,
         populationMod: 2,
       };
       break;

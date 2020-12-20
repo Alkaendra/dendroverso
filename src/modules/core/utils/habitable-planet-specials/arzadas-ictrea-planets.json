@@ -2,8 +2,8 @@
   {
     "type": {
       "energeticResourcesMod": 0,
-      "foodResourcesMod": 2,
-      "industrialResourcesMod": 1,
+      "food_resources_mod": 2,
+      "industrial_resources_mod": 1,
       "populationMod": 1,
       "specialTraitMod": 1,
       "typeCode": "CON",
@@ -39,8 +39,8 @@
   {
     "type": {
       "energeticResourcesMod": 1,
-      "foodResourcesMod": 1,
-      "industrialResourcesMod": 1,
+      "food_resources_mod": 1,
+      "industrial_resources_mod": 1,
       "populationMod": -1,
       "specialTraitMod": 1,
       "typeCode": "SEL",
@@ -76,8 +76,8 @@
   {
     "type": {
       "energeticResourcesMod": 0,
-      "foodResourcesMod": -2,
-      "industrialResourcesMod": 2,
+      "food_resources_mod": -2,
+      "industrial_resources_mod": 2,
       "populationMod": -2,
       "specialTraitMod": 0,
       "typeCode": "ALP",
@@ -113,8 +113,8 @@
   {
     "type": {
       "energeticResourcesMod": 1,
-      "foodResourcesMod": 1,
-      "industrialResourcesMod": 1,
+      "food_resources_mod": 1,
+      "industrial_resources_mod": 1,
       "populationMod": -1,
       "specialTraitMod": 1,
       "typeCode": "SEL",
@@ -156,8 +156,8 @@
   {
     "type": {
       "energeticResourcesMod": 1,
-      "foodResourcesMod": -2,
-      "industrialResourcesMod": 1,
+      "food_resources_mod": -2,
+      "industrial_resources_mod": 1,
       "populationMod": -2,
       "specialTraitMod": 0,
       "typeCode": "BOR",
@@ -197,8 +197,8 @@
   {
     "type": {
       "energeticResourcesMod": 1,
-      "foodResourcesMod": 3,
-      "industrialResourcesMod": -1,
+      "food_resources_mod": 3,
+      "industrial_resources_mod": -1,
       "populationMod": -1,
       "specialTraitMod": 2,
       "typeCode": "OCE",
@@ -241,8 +241,8 @@
   {
     "type": {
       "energeticResourcesMod": 1,
-      "foodResourcesMod": -2,
-      "industrialResourcesMod": 1,
+      "food_resources_mod": -2,
+      "industrial_resources_mod": 1,
       "populationMod": -2,
       "specialTraitMod": 0,
       "typeCode": "BOR",
@@ -278,8 +278,8 @@
   {
     "type": {
       "energeticResourcesMod": 0,
-      "foodResourcesMod": -2,
-      "industrialResourcesMod": 2,
+      "food_resources_mod": -2,
+      "industrial_resources_mod": 2,
       "populationMod": -2,
       "specialTraitMod": 0,
       "typeCode": "ALP",
@@ -321,8 +321,8 @@
   {
     "type": {
       "energeticResourcesMod": 1,
-      "foodResourcesMod": -2,
-      "industrialResourcesMod": 2,
+      "food_resources_mod": -2,
+      "industrial_resources_mod": 2,
       "populationMod": -2,
       "specialTraitMod": 0,
       "typeCode": "ARI",

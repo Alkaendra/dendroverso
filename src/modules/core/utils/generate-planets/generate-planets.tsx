@@ -4,7 +4,10 @@ import { getPlanetaryGeosphereData } from './generate-planets-geosphere';
 import { getPlanetaryAtmosphericalData } from './generate-planets-atmosphere';
 import { generateRandomFloat, generateRandomNumber } from '../utils';
 import { PLANETARY_MAYOR_TYPES } from '../../../admin/components/admin-commons/admin-models/unhabitable-planet.model';
-import { PlanetaryType } from '../../../admin/components/admin-commons/admin-models/inhabitated-planet.model';
+import {
+  PlanetaryType,
+  INHABITATED_PLANETARY_CLIMATE_TYPES,
+} from '../../../admin/components/admin-commons/admin-models/inhabitated-planet.model';
 
 export const SYSTEM_ZONES = {
   INNER: 'inner',
@@ -14,170 +17,170 @@ export const SYSTEM_ZONES = {
 
 export type habitablePlanetRoleType = {
   connectivityMod: number;
-  culturalDevelopmentMod: number;
-  economicalDevelopmentMod: number;
-  industrialDevelopmentMod: number;
+  cultural_development_mod: number;
+  economical_development_mod: number;
+  industrial_development_mod: number;
   label: string;
   maxEnergeticResourcesMod: number;
   maxFoodResourcesMod: number;
   maxIndustrialResourcesMod: number;
-  militaryDevelopmentMod: number;
+  military_development_mod: number;
   pobMod: number;
-  technologicalDevelopmentMod: number;
+  technological_development_mod: number;
 };
 
 export const HABITABLE_PLANET_ROLE = {
   NATION_CAPITAL: {
     connectivityMod: 60,
-    culturalDevelopmentMod: generateRandomNumber(2, 3),
-    economicalDevelopmentMod: generateRandomNumber(3, 6),
-    industrialDevelopmentMod: generateRandomNumber(2, 3),
+    cultural_development_mod: generateRandomNumber(2, 3),
+    economical_development_mod: generateRandomNumber(3, 6),
+    industrial_development_mod: generateRandomNumber(2, 3),
     label: 'Capital de Nación',
     maxEnergeticResourcesMod: 0,
     maxFoodResourcesMod: 0,
     maxIndustrialResourcesMod: 0,
-    militaryDevelopmentMod: generateRandomNumber(3, 4),
+    military_development_mod: generateRandomNumber(3, 4),
     pobMod: 6,
-    technologicalDevelopmentMod: generateRandomNumber(2, 3),
+    technological_development_mod: generateRandomNumber(2, 3),
   },
   REGION_CAPITAL: {
     connectivityMod: 50,
-    culturalDevelopmentMod: generateRandomNumber(1, 2),
-    economicalDevelopmentMod: generateRandomNumber(2, 4),
-    industrialDevelopmentMod: generateRandomNumber(1, 2),
+    cultural_development_mod: generateRandomNumber(1, 2),
+    economical_development_mod: generateRandomNumber(2, 4),
+    industrial_development_mod: generateRandomNumber(1, 2),
     label: 'Capital regional',
     maxEnergeticResourcesMod: 0,
     maxFoodResourcesMod: 0,
     maxIndustrialResourcesMod: 0,
-    militaryDevelopmentMod: generateRandomNumber(1, 2),
+    military_development_mod: generateRandomNumber(1, 2),
     pobMod: 4,
-    technologicalDevelopmentMod: generateRandomNumber(1, 2),
+    technological_development_mod: generateRandomNumber(1, 2),
   },
   MAYOR_RESOURCE_PRODUCTOR: {
     connectivityMod: 50,
-    culturalDevelopmentMod: 0,
-    economicalDevelopmentMod: generateRandomNumber(1, 2),
-    industrialDevelopmentMod: 0,
+    cultural_development_mod: 0,
+    economical_development_mod: generateRandomNumber(1, 2),
+    industrial_development_mod: 0,
     label: 'Productor de Recursos Principal',
     maxEnergeticResourcesMod:
       generateRandomNumber(1, 100) > 70 ? generateRandomNumber(3, 4) : generateRandomNumber(1, 2),
     maxFoodResourcesMod: generateRandomNumber(1, 100) > 70 ? generateRandomNumber(3, 4) : generateRandomNumber(1, 2),
     maxIndustrialResourcesMod:
       generateRandomNumber(1, 100) > 70 ? generateRandomNumber(3, 4) : generateRandomNumber(1, 2),
-    militaryDevelopmentMod: generateRandomNumber(0, 1),
+    military_development_mod: generateRandomNumber(0, 1),
     pobMod: 2,
-    technologicalDevelopmentMod: 0,
+    technological_development_mod: 0,
   },
   MAYOR_INDUSTRIAL_CENTER: {
     connectivityMod: 40,
-    culturalDevelopmentMod: 0,
-    economicalDevelopmentMod: generateRandomNumber(2, 3),
-    industrialDevelopmentMod: generateRandomNumber(3, 4),
+    cultural_development_mod: 0,
+    economical_development_mod: generateRandomNumber(2, 3),
+    industrial_development_mod: generateRandomNumber(3, 4),
     label: 'Productor Industrial Principal',
     maxEnergeticResourcesMod: 0,
     maxFoodResourcesMod: 0,
     maxIndustrialResourcesMod: 0,
-    militaryDevelopmentMod: generateRandomNumber(0, 1),
+    military_development_mod: generateRandomNumber(0, 1),
     pobMod: 2,
-    technologicalDevelopmentMod: 0,
+    technological_development_mod: 0,
   },
   MINOR_RESOURCE_PRODUCTOR: {
     connectivityMod: 40,
-    culturalDevelopmentMod: 0,
-    economicalDevelopmentMod: generateRandomNumber(1, 2),
-    industrialDevelopmentMod: 0,
+    cultural_development_mod: 0,
+    economical_development_mod: generateRandomNumber(1, 2),
+    industrial_development_mod: 0,
     label: 'Productor de Recursos Menor',
     maxEnergeticResourcesMod: generateRandomNumber(1, 100) > 70 ? generateRandomNumber(2, 3) : 1,
     maxFoodResourcesMod: generateRandomNumber(1, 100) > 70 ? generateRandomNumber(2, 3) : 1,
     maxIndustrialResourcesMod: generateRandomNumber(1, 100) > 70 ? generateRandomNumber(2, 3) : 1,
-    militaryDevelopmentMod: 0,
+    military_development_mod: 0,
     pobMod: 1,
-    technologicalDevelopmentMod: 0,
+    technological_development_mod: 0,
   },
   MINOR_INDUSTRIAL_CENTER: {
     connectivityMod: 20,
-    culturalDevelopmentMod: 0,
-    economicalDevelopmentMod: generateRandomNumber(1, 2),
-    industrialDevelopmentMod: generateRandomNumber(1, 2),
+    cultural_development_mod: 0,
+    economical_development_mod: generateRandomNumber(1, 2),
+    industrial_development_mod: generateRandomNumber(1, 2),
     label: 'Productor Industrial Menor',
     maxEnergeticResourcesMod: 0,
     maxFoodResourcesMod: 0,
     maxIndustrialResourcesMod: 0,
-    militaryDevelopmentMod: 0,
+    military_development_mod: 0,
     pobMod: 1,
-    technologicalDevelopmentMod: 0,
+    technological_development_mod: 0,
   },
   CULTURAL_CENTER: {
     connectivityMod: 20,
-    culturalDevelopmentMod: generateRandomNumber(2, 3),
-    economicalDevelopmentMod: generateRandomNumber(1, 2),
-    industrialDevelopmentMod: 0,
+    cultural_development_mod: generateRandomNumber(2, 3),
+    economical_development_mod: generateRandomNumber(1, 2),
+    industrial_development_mod: 0,
     label: 'Centro Cultural',
     maxEnergeticResourcesMod: 0,
     maxFoodResourcesMod: 0,
     maxIndustrialResourcesMod: 0,
-    militaryDevelopmentMod: 0,
+    military_development_mod: 0,
     pobMod: 0,
-    technologicalDevelopmentMod: 0,
+    technological_development_mod: 0,
   },
   RESEARCH_CENTER: {
     connectivityMod: 20,
-    culturalDevelopmentMod: 0,
-    economicalDevelopmentMod: generateRandomNumber(1, 2),
-    industrialDevelopmentMod: 0,
+    cultural_development_mod: 0,
+    economical_development_mod: generateRandomNumber(1, 2),
+    industrial_development_mod: 0,
     label: 'Centro de Investigación',
     maxEnergeticResourcesMod: 0,
     maxFoodResourcesMod: 0,
     maxIndustrialResourcesMod: 0,
-    militaryDevelopmentMod: 0,
+    military_development_mod: 0,
     pobMod: 0,
-    technologicalDevelopmentMod: generateRandomNumber(2, 3),
+    technological_development_mod: generateRandomNumber(2, 3),
   },
   MILITARY_BASE: {
     connectivityMod: 30,
-    culturalDevelopmentMod: 0,
-    economicalDevelopmentMod: 0,
-    industrialDevelopmentMod: 0,
+    cultural_development_mod: 0,
+    economical_development_mod: 0,
+    industrial_development_mod: 0,
     label: 'Base Militar',
     maxEnergeticResourcesMod: 0,
     maxFoodResourcesMod: 0,
     maxIndustrialResourcesMod: 0,
-    militaryDevelopmentMod: generateRandomNumber(2, 3),
+    military_development_mod: generateRandomNumber(2, 3),
     pobMod: 0,
-    technologicalDevelopmentMod: generateRandomNumber(1, 2),
+    technological_development_mod: generateRandomNumber(1, 2),
   },
   COLONY: {
     connectivityMod: 20,
-    culturalDevelopmentMod: 0,
-    economicalDevelopmentMod: 0,
-    industrialDevelopmentMod: 0,
+    cultural_development_mod: 0,
+    economical_development_mod: 0,
+    industrial_development_mod: 0,
     label: 'Colonia',
     maxEnergeticResourcesMod: 0,
     maxFoodResourcesMod: 0,
     maxIndustrialResourcesMod: 0,
-    militaryDevelopmentMod: 0,
+    military_development_mod: 0,
     pobMod: -1,
-    technologicalDevelopmentMod: 0,
+    technological_development_mod: 0,
   },
   OTHER: {
     connectivityMod: 20,
-    culturalDevelopmentMod: 0,
-    economicalDevelopmentMod: 0,
-    industrialDevelopmentMod: 0,
+    cultural_development_mod: 0,
+    economical_development_mod: 0,
+    industrial_development_mod: 0,
     label: 'Otro',
     maxEnergeticResourcesMod: 0,
     maxFoodResourcesMod: 0,
     maxIndustrialResourcesMod: 0,
-    militaryDevelopmentMod: 0,
+    military_development_mod: 0,
     pobMod: -2,
-    technologicalDevelopmentMod: 0,
+    technological_development_mod: 0,
   },
 };
 
 export interface resourcesAndPopulationMods {
   energyResourcesMod: number;
-  foodResourcesMod: number;
-  industrialResourcesMod: number;
+  food_resources_mod: number;
+  industrial_resources_mod: number;
   populationMod: number;
   specials: string[];
 }
@@ -304,37 +307,37 @@ export const getPlanetSubType = (surfaceTemperature: number, hidrologyPercentage
       case hidrologyPercentage < 10:
         planetType = {
           energeticResourcesMod: 1,
-          foodResourcesMod: -2,
-          industrialResourcesMod: 0,
+          food_resources_mod: -2,
+          industrial_resources_mod: 0,
           populationMod: -2,
           specialTraitMod: 0,
           terrainTypes: ['Cavernas', 'Páramo helado', 'Glaciar', 'Mar', 'Océano'],
-          subTypeCode: 'ART', // ART - Ártico, tipo Hoth o Noveria.
-          subType: 'Ártico',
+          subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.ARTIC.code, // ART - Ártico, tipo Hoth o Noveria.
+          subType: INHABITATED_PLANETARY_CLIMATE_TYPES.ARTIC.type,
         };
         break;
       case hidrologyPercentage >= 10 && hidrologyPercentage < 80:
         planetType = {
           energeticResourcesMod: 1,
-          foodResourcesMod: -2,
-          industrialResourcesMod: 1,
+          food_resources_mod: -2,
+          industrial_resources_mod: 1,
           populationMod: -2,
           specialTraitMod: 0,
           terrainTypes: ['Colinas', 'Mar', 'Océano', 'Taiga', 'Tundra'],
-          subTypeCode: 'BOR', // BOR - Terrestre tipo tundra.
-          subType: 'Boreal',
+          subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.BOREAL.code, // BOR - Terrestre tipo tundra.
+          subType: INHABITATED_PLANETARY_CLIMATE_TYPES.BOREAL.type,
         };
         break;
       case hidrologyPercentage >= 80:
         planetType = {
           energeticResourcesMod: 1,
-          foodResourcesMod: 1,
-          industrialResourcesMod: -1,
+          food_resources_mod: 1,
+          industrial_resources_mod: -1,
           populationMod: -1,
           specialTraitMod: 1,
           terrainTypes: ['Archipiélago', 'Isla', 'Mar', 'Océano'],
-          subTypeCode: 'OCH', // OCH - Terrestre océanico con superficie congelada, tipo Europa.
-          subType: 'Océanico Helado',
+          subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.FROZEN_OCEAN.code, // OCH - Terrestre océanico con superficie congelada, tipo Europa.
+          subType: INHABITATED_PLANETARY_CLIMATE_TYPES.FROZEN_OCEAN.type,
         };
         break;
     }
@@ -343,37 +346,37 @@ export const getPlanetSubType = (surfaceTemperature: number, hidrologyPercentage
       case hidrologyPercentage < 10:
         planetType = {
           energeticResourcesMod: 1,
-          foodResourcesMod: -2,
-          industrialResourcesMod: 1,
+          food_resources_mod: -2,
+          industrial_resources_mod: 1,
           populationMod: -2,
           specialTraitMod: 0,
           terrainTypes: ['Colinas', 'Mar', 'Océano', 'Taiga', 'Tundra'],
-          subTypeCode: 'BOR', // BOR - Terrestre tipo tundra.
-          subType: 'Boreal',
+          subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.BOREAL.code, // BOR - Terrestre tipo tundra.
+          subType: INHABITATED_PLANETARY_CLIMATE_TYPES.BOREAL.type,
         };
         break;
       case hidrologyPercentage >= 10 && hidrologyPercentage < 50:
         if (IH > 2) {
           planetType = {
             energeticResourcesMod: 0,
-            foodResourcesMod: 0,
-            industrialResourcesMod: 1,
+            food_resources_mod: 0,
+            industrial_resources_mod: 1,
             populationMod: -1,
             specialTraitMod: 1,
             terrainTypes: ['Cavernas', 'Colinas', 'Llanura', 'Mar', 'Manglar', 'Océano', 'Selva'],
-            subTypeCode: 'SAV', // SAV - Terrestre tipo savana.
-            subType: 'Savana',
+            subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.SAVANNA.code, // SAV - Terrestre tipo savana.
+            subType: INHABITATED_PLANETARY_CLIMATE_TYPES.SAVANNA.type,
           };
         } else {
           planetType = {
             energeticResourcesMod: 0,
-            foodResourcesMod: 2,
-            industrialResourcesMod: 1,
+            food_resources_mod: 2,
+            industrial_resources_mod: 1,
             populationMod: 1,
             specialTraitMod: 1,
             terrainTypes: ['Bosque', 'Cavernas', 'Colinas', 'Llanura', 'Mar', 'Manglar', 'Montañas', 'Océano', 'Selva'],
-            subTypeCode: 'CON', // CON - Terrestre tipo continental, como la Tierra.
-            subType: 'Continental',
+            subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.CONTINENTAL.code, // CON - Terrestre tipo continental, como la Tierra.
+            subType: INHABITATED_PLANETARY_CLIMATE_TYPES.CONTINENTAL.type,
           };
         }
         break;
@@ -381,48 +384,48 @@ export const getPlanetSubType = (surfaceTemperature: number, hidrologyPercentage
         if (IH >= 3) {
           planetType = {
             energeticResourcesMod: 0,
-            foodResourcesMod: 3,
-            industrialResourcesMod: 1,
+            food_resources_mod: 3,
+            industrial_resources_mod: 1,
             populationMod: 2,
             specialTraitMod: 2,
             terrainTypes: ['Bosque', 'Cavernas', 'Colinas', 'Llanura', 'Mar', 'Manglar', 'Montañas', 'Océano', 'Selva'],
-            subTypeCode: 'JAR', // JAR - Terrestre tipo jardín.
-            subType: 'Jardín',
+            subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.GARDEN.code, // JAR - Terrestre tipo jardín.
+            subType: INHABITATED_PLANETARY_CLIMATE_TYPES.GARDEN.type,
           };
         } else if (IH === 2) {
           planetType = {
             energeticResourcesMod: 1,
-            foodResourcesMod: 1,
-            industrialResourcesMod: 1,
+            food_resources_mod: 1,
+            industrial_resources_mod: 1,
             populationMod: -1,
             specialTraitMod: 1,
             terrainTypes: ['Cavernas', 'Colinas', 'Mar', 'Manglar', 'Océano', 'Selva', 'Túneles'],
-            subTypeCode: 'SEL', // SEL - Terrestre tipo selvático
-            subType: 'Selvático',
+            subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.TROPICAL.code, // SEL - Terrestre tipo selvático
+            subType: INHABITATED_PLANETARY_CLIMATE_TYPES.TROPICAL.type,
           };
         } else {
           planetType = {
             energeticResourcesMod: 0,
-            foodResourcesMod: 2,
-            industrialResourcesMod: 1,
+            food_resources_mod: 2,
+            industrial_resources_mod: 1,
             populationMod: 1,
             specialTraitMod: 1,
             terrainTypes: ['Bosque', 'Cavernas', 'Colinas', 'Llanura', 'Mar', 'Manglar', 'Montañas', 'Océano', 'Selva'],
-            subTypeCode: 'CON', // TC - Terrestre tipo continental, como la Tierra.
-            subType: 'Continental',
+            subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.CONTINENTAL.code, // TC - Terrestre tipo continental, como la Tierra.
+            subType: INHABITATED_PLANETARY_CLIMATE_TYPES.CONTINENTAL.type,
           };
         }
         break;
       case hidrologyPercentage >= 80:
         planetType = {
           energeticResourcesMod: 1,
-          foodResourcesMod: 3,
-          industrialResourcesMod: -1,
+          food_resources_mod: 3,
+          industrial_resources_mod: -1,
           populationMod: -1,
           specialTraitMod: 2,
           terrainTypes: ['Archipiélago', 'Isla', 'Mar', 'Océano'],
-          subTypeCode: 'OCE', // OCE - Terrestre océanico tipo Kamino.
-          subType: 'Oceánico',
+          subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.OCEANIC.code, // OCE - Terrestre océanico tipo Kamino.
+          subType: INHABITATED_PLANETARY_CLIMATE_TYPES.OCEANIC.type,
         };
         break;
     }
@@ -431,61 +434,61 @@ export const getPlanetSubType = (surfaceTemperature: number, hidrologyPercentage
       case hidrologyPercentage < 10:
         planetType = {
           energeticResourcesMod: 1,
-          foodResourcesMod: -2,
-          industrialResourcesMod: 2,
+          food_resources_mod: -2,
+          industrial_resources_mod: 2,
           populationMod: -2,
           specialTraitMod: 0,
           terrainTypes: ['Cavernas', 'Colinas', 'Páramo', 'Lago', 'Montañas', 'Túneles'],
-          subTypeCode: 'ARI', // ARI - Terrestre tipo árido.
-          subType: 'Árido',
+          subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.ARID.code, // ARI - Terrestre tipo árido.
+          subType: INHABITATED_PLANETARY_CLIMATE_TYPES.ARID.type,
         };
         break;
       case hidrologyPercentage >= 10 && hidrologyPercentage < 30:
         planetType = {
           energeticResourcesMod: 2,
-          foodResourcesMod: -2,
-          industrialResourcesMod: 2,
+          food_resources_mod: -2,
+          industrial_resources_mod: 2,
           populationMod: -2,
           specialTraitMod: 0,
           terrainTypes: ['Cavernas', 'Colinas', 'Desierto', 'Dunas', 'Montañas', 'Túneles'],
-          subTypeCode: 'DES', // TD - Terrestre desértico tipo Arrakis.
-          subType: 'Desértico',
+          subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.DESERTIC.code, // TD - Terrestre desértico tipo Arrakis.
+          subType: INHABITATED_PLANETARY_CLIMATE_TYPES.DESERTIC.type,
         };
         break;
       case hidrologyPercentage >= 30 && hidrologyPercentage < 50:
         planetType = {
           energeticResourcesMod: 1,
-          foodResourcesMod: -2,
-          industrialResourcesMod: 1,
+          food_resources_mod: -2,
+          industrial_resources_mod: 1,
           populationMod: -3,
           specialTraitMod: 0,
           terrainTypes: ['Bosque', 'Cavernas', 'Manglar', 'Océano', 'Selva'],
-          subTypeCode: 'PAL', // PAL - Terrestre pantanoso tipo Dagobah.
-          subType: 'Palustre',
+          subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.MARSH.code, // PAL - Terrestre pantanoso tipo Dagobah.
+          subType: INHABITATED_PLANETARY_CLIMATE_TYPES.MARSH.type,
         };
         break;
       case hidrologyPercentage >= 50 && hidrologyPercentage < 80:
         planetType = {
           energeticResourcesMod: 1,
-          foodResourcesMod: 1,
-          industrialResourcesMod: 1,
+          food_resources_mod: 1,
+          industrial_resources_mod: 1,
           populationMod: -1,
           specialTraitMod: 1,
           terrainTypes: ['Cavernas', 'Colinas', 'Mar', 'Manglar', 'Océano', 'Selva', 'Túneles'],
-          subTypeCode: 'SEL', // SEL - Terrestre selvático.
-          subType: 'Selvático',
+          subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.TROPICAL.code, // SEL - Terrestre selvático.
+          subType: INHABITATED_PLANETARY_CLIMATE_TYPES.TROPICAL.type,
         };
         break;
       case hidrologyPercentage >= 80:
         planetType = {
           energeticResourcesMod: 1,
-          foodResourcesMod: 3,
-          industrialResourcesMod: -1,
+          food_resources_mod: 3,
+          industrial_resources_mod: -1,
           populationMod: -1,
           specialTraitMod: 2,
           terrainTypes: ['Archipiélago', 'Isla', 'Mar', 'Océano'],
-          subTypeCode: 'OCE', // OCE - Terrestre océanico tipo Kamino.
-          subType: 'Oceánico',
+          subTypeCode: INHABITATED_PLANETARY_CLIMATE_TYPES.OCEANIC.code, // OCE - Terrestre océanico tipo Kamino.
+          subType: INHABITATED_PLANETARY_CLIMATE_TYPES.OCEANIC.type,
         };
         break;
     }

@@ -25,6 +25,8 @@ import { InhabitatedPlanet } from '../../../admin/components/admin-commons/admin
 import { generateTableDataByFrequencies } from '../tables-data';
 import { sectorInhabitatedSystems } from '../../../admin/components/admin-commons/admin-models/sector.model';
 import { PLANETARY_POSSIBLE_ROLES_BY_SECTOR_ROLE } from '../../../admin/components/admin-commons/admin-models/region.model';
+import { generateManySpaceStations } from '../generate-space-stations/generate-space-stations';
+import { generateInhabitatedPlanetTerrainUnits } from '../generate-planetary-terrain-units/generate-inhabitable-planet-terrain-units';
 
 export const generatePlanetaryDevelopment = (population: any, planetRoleMods: any) => {
   const returnRangedValue = (max: number, min: number, value: any) => {
@@ -40,27 +42,29 @@ export const generatePlanetaryDevelopment = (population: any, planetRoleMods: an
     culturalDevelopment: returnRangedValue(
       6,
       1,
-      generateRandomNumber(1, 2) + population.culturalDevelopmentMod + planetRoleMods.culturalDevelopmentMod,
+      generateRandomNumber(1, 2) + population.cultural_development_mod + planetRoleMods.cultural_development_mod,
     ),
     economicalDevelopment: returnRangedValue(
       6,
       1,
-      generateRandomNumber(1, 2) + population.economicalDevelopmentMod + planetRoleMods.economicalDevelopmentMod,
+      generateRandomNumber(1, 2) + population.economical_development_mod + planetRoleMods.economical_development_mod,
     ),
     militaryDevelopment: returnRangedValue(
       6,
       1,
-      generateRandomNumber(1, 2) + population.militaryDevelopmentMod + planetRoleMods.militaryDevelopmentMod,
+      generateRandomNumber(1, 2) + population.military_development_mod + planetRoleMods.military_development_mod,
     ),
     industrialDevelopment: returnRangedValue(
       6,
       1,
-      generateRandomNumber(1, 2) + population.industrialDevelopmentMod + planetRoleMods.industrialDevelopmentMod,
+      generateRandomNumber(1, 2) + population.industrial_development_mod + planetRoleMods.industrial_development_mod,
     ),
     technologicalDevelopment: returnRangedValue(
       6,
       1,
-      generateRandomNumber(1, 2) + population.technologicalDevelopmentMod + planetRoleMods.technologicalDevelopmentMod,
+      generateRandomNumber(1, 2) +
+        population.technological_development_mod +
+        planetRoleMods.technological_development_mod,
     ),
   };
 };
@@ -123,19 +127,19 @@ export const habitablePlanet = (
   planet.maximunFoodResources = obtainRangedValue(
     0,
     6,
-    planet.type.foodResourcesMod + planetRole.maxFoodResourcesMod,
+    planet.type.food_resources_mod + planetRole.maxFoodResourcesMod,
     1,
     3,
-    planetarySpecials.foodResourcesMod,
+    planetarySpecials.food_resources_mod,
     resourcesOcurrenceTable,
   );
   planet.maximunIndustrialResources = obtainRangedValue(
     0,
     6,
-    planet.type.industrialResourcesMod,
+    planet.type.industrial_resources_mod,
     1,
     2,
-    planetarySpecials.industrialResourcesMod + planetRole.maxIndustrialResourcesMod,
+    planetarySpecials.industrial_resources_mod + planetRole.maxIndustrialResourcesMod,
     resourcesOcurrenceTable,
   );
   planet.systemConnectivity = generateSystemConnectivity(generateRandomNumber(1, 100), planetRole.connectivityMod);
@@ -163,6 +167,15 @@ export const habitablePlanet = (
   );
   planet.role = planetRole.label;
   planet.importance = planet.IH + planet.systemConnectivity.stable + planet.systemConnectivity.valiangric;
+  planet.terrainUnits = generateInhabitatedPlanetTerrainUnits(
+    planet.size,
+    null,
+    planet.type.subType,
+    generateRandomNumber(2, 5),
+    planet.hidrosphere.value,
+    planet.population.value,
+  );
+  planet.spaceStations = generateManySpaceStations(6, planet.population.value, planetRole);
 
   return planet;
 };
